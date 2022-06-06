@@ -1,0 +1,529 @@
+ Deveploment:
+ ===========
+
+ VisualForce & Apex Classes:
+ ==========================
+ 1) Create a VF Page to display Account records
+ 2) Create a VF page to display your custom Object records
+ 3) write SOQL query to display Account,Task,Opportunity,case,event,Group,Queue,GroupMember records in VF pages.
+ 4) create a VF page to insert account record in Database.After saving record it should redirect to  Standard Account detail page.
+ 5) Create a form with all datatypes field and enter values for those fields.And pass these parameters to next page.Means after submitting the form , I want to display this form data in next page.
+ 6) when we click on Accounts tab , your new custom VF page should open.In that you have to enter all account details and try to save it.Then it should redirect to standard Account detail page.
+ 7) upload document,Static resources,files using VF Page
+ 8) create a VF Page to enter both Account and Contact information at a time and when you click on save button both account and corresponding Contact should be created.
+ 9) create a VF page to implement calculator functionality.In VF page I will enter value1 and value2.If I click add button sum of 2 values should come as a result.Implement sub,mul,div,moddiv	Create one VF page with 2 fields name , age and salary.Suppose when we are not entering any values in the text boxes and try to submit the form , then it should display error messages like name should be entered,age should be entered,salary should be entered depends on which field is empty.
+ 10) "Implement a controller to fetch 5 Account records , and set the industry as energy for all those records.
+     Display the records in VF page."
+ 11) Create a VF page with Account  fields.They are account name and industry .After entering values in these fields Query should be formed with this dynamic values which are coming from VF page.Fetch the results by executing that query and display in VF page.
+ 12) Create a child to parent query and parent to child query in controller in between any objects and display those results in VF page.Try by using all scenarios by taking standard and custom objects
+ 13) Write parent to child or child to parent query depends on the relation between objects and display in VF page.1.Account with AccountTeamMember2.Opportunity with OpportunityTeamMember3.Opportunity with OpportunityLineItem4.Quote with Quote Line Item 5.Account with List of Tasks6.Contact with List of Tasks.7.PriceBook with PriceBookEntry.8.Group with GroupMembers.
+ 14) Aggregate Functions Scenarios on SOQL queries.1.Fetch the count of records in Account object.2.Fetch the industry count in Account records.3.Fetch the sum of Amount field in Account records.4.Fetch the Average of Amount from opportunity where closedDate is TODAY.5.Fetch the min amount from Opportunity records where closedDate is  not TODAY.6.Fetch the Max amount from Opportunity records where closedDate is nextday.And display that result in VF page
+ 15) Write a soql query to fetch all the leads which are created Today.Keep their email ids in separate list.Write a soql query to fetch all the contacts of those whose email id is in the above list.
+ 16) 1.Write a query to fetch all the Account records which account name starts with 'S'.2.Fetch the records whose name End with r.3.Fecth the records whose 2nd character from the last contains r.4.Fetch the records which are deleted.5.Try to lock the records until your transaction is completed.How you will do it?
+ 17) Fetch all the opportunity records whose stageName is prospective and update the closeDate as 15 days from today.
+ 18) Fetch all the leads which are created with lead source as email and update those records rating as hot and industry as energy.
+ 19) 1.delete all the leads whose rating is cold.2.delete all the leads whose created date is today.3.delete all the opportunities whose closedDate is today.4.update account records industry values as energy.
+ 20) Display the account name in one column corresponding contacts count in another column
+ 21) Displaying the aggregate results of any SObject in VF page
+ 22) write a soql query on Account and fetch all the account records and display in the vf page using repeat. 
+ 23) "Create  a custom object with name and value fields and enter one string expression value like 1  or 1 AND 3  in textbox .Based on that string expression we have to form a query and display those records.
+   Custom Object : CustomAccount
+   customField : value
+         Name     value
+     1 industry=’Banking’
+     2 industry=’Energy’
+     3 rating=’Hot’
+     4 rating=’warm’
+    In textbox ----- 1 AND 4
+
+ 24) "when ever user enter some string  expression in the text box like A=B AND X=Y , then we have to form a query with that string in where condition.
+    Eg:  take map and store the below values
+   I—Industry
+   B—Banking
+   E—Energy
+   R—Rating
+   W---warm
+   H---Hot 
+   And give the string in text box like  I=B AND R=H "
+ 25) Creating a VF page with 3 fields name,phone,industry with search button.When we click on search button, display those account records in same page  with checkbox (wrapper records).And whenever we click on check boxes we have to show those selected accounts in popup window.
+ 26) create a csv file with Account Records and upload that csv file in vf page , using apex class ,read and parse data from csv and insert those records into  Account object.create the csv file with the inserted account records ids also,Delete the corresponding records which are provided in csv file with id 
+ 27) Create an Opportunity and Opportunity Line items,When we create a new opportunity and with entered product details OpportunityLineItems should create in custom manner.
+ 28) Create a Quote and Quote Line Items while creating an Opportunity
+ 29) "Whenever new Lead is created we have to check for users who have the less number of leads, we have to assign that lead to that particular user.
+ 30) select * from Account.How you will achieve it in salesforce
+ 31) Check the Duplicate account records and Display the account names in one column , and count of duplicates in another column in vf page
+ 32) query all sobjects and store them in a picklist,Query all the fields in particular sobject of your choice,Query records of particular sobjects store them in a picklist
+ 33) Have 3 picklist's one sholud have all sobjects, second picklist sholud have fields related to selected sobjects in picklist 1, now if I select a field in picklist 2 all the values in that field should be visible in picklict3 
+  
+    Arrays:
+    ======
+ 1) Create an array to store marks and insert marks
+ 2) Create an array to store citynames and insert cityNames
+ 3) Create an array to store productNames and insert names
+ 4) Create an array of Account and insert three Accounts
+ 5) Create an array of Contact and insert three contacts
+ 6) Create an array of cases and insert three cases
+ 7) Create an array of cases and insert three cases
+
+ 
+    Wrapper Clases:
+    ===============
+
+ 1) Create a wrapper class Student with name,age,dob , create an array of student wrapper class and insert three students
+ 2) Create a wrapper class employee with empName,exp ,salary , Create an array of employee wrapper class and insert three employees
+ 3) Create a wrapper class AccountInfo with Account and contact objects, Create an array of AccountInfo class and insert three records
+ 4) Create a Wrapper class College with ColgName,Contact con , Create an array of Wrapper class College and insert three records
+ 5) Create a Set of Student wrapper class and display in the VF page
+ 6) Create a List of wrapper class Student with Name,Age ,Dob and display the data in the VF page
+ 7) Create a List of wrapper class Employee with empName,Salary,exp and display the data in the VF Page
+ 8) Create a List of wrapper class ProductData with productName,Price and quantity and display the product data which has max price
+ 9) Create a wrapper class with account , contact,and boolean variables.Create a list of That wrapper class and add some elemets in it.
+ 10) Create a wrapper class OptyWrapper with Account and opportunity varaibles .Create a list of wrapper class and add elements in it.
+ 11) Create a wrapper class AccountWrapper with Account,Contact,Opportunity variables.Create a list of wrapper classes and add elements in it.Display the wrapper in VF page
+ 12) Create a wrapper class to display Lead Name,Lead Email and associated list of contacts with that email id in VF page.
+ 13) Create  AccountWrapper with AccountName , AccountIndustry ,  AccountRating.Create Wrapper list and wrapper elements in it.And display that list in VF page
+ 14) Create CaseWrapper with type,status,priority and origin , create wrapper list and display it in VF page
+ 15) Create Contracts with status,startDate,contractTerm,companysigneddate , create wrapper list and display it in vf page.
+ 16) Create a List of wrapper class ProductData  with productName,Price and quantity  and display the product data
+ 17) Create StudentWrapper with studentName,age and branch . and create wrapper list and display it in vf page
+ 18) Create EmployeeWrapper with radiobutton,empName,sal,joiningDate,exp . Create Wrapper list and display it in VF page.(check once)
+ 19) Create CollegeWrapper with checkbox,collegeName,collegeCode , create wrapper list and display it in vf page.
+ 20) Create a wrapper class with checkbox,Account,Contact variables.And create wrapper list and display it in VF page.
+ 21) Create a wrapper class with Account,List of opportunities.And create a wrapper list and display it in vf page.
+ 22) Create a wrapper class with Opportunity and OpportunityLineItems , And Create a wrapper list and display it in VF page.
+
+
+------------
+
+
+
+  Collections:
+  ===========
+ 
+ 1) Map Create Map with  Student name as key and Student phoneNo as value and display the map data using pageblockTable in the Vfpage 
+ 2) Create Map with with empNo as Key and  Employee wrapper class as object (Wrapper class should contain empNo,Name,Salary )
+ 3) Create a Map with city name as key and List of places as Values
+ 4) Create a map and try to get all keys from that map and values from that map.Display in VF page.
+ 5) Create a map to store account name as key and corresponding opportunities as values.Display that map in VF page
+ 6) Create a map to store account id as key and account s object as map's values
+ 7) Map<Id,Map<String,Contact>>  To display Account Id, Account Name , Account Contact
+ 8) Map<Id,Map<String,List<Contact>>>  To display Account Id, Account Name , Account Contacts
+ 9) Create a list,set,map to add 1,5,3,1,2,4,6,4,8,7.And display in VF page And check how they are displaying.In Map keep numbers as key and some person names  as values.
+ 10) Create a Class Student with(stdName,age,branch) and display in the VF page
+ 11) Create a Class ProductData with (ProdName,Price ,quanity ) and display in the VF Page
+ 12) Create a class Movie with(MovieName, ticketsAvailable,showTime ) and display in the VF Page
+ 13) Create a class College with(colgName,branch,city,phone) and display in the VF page
+ 14) Create Sobject Account with Name,Industry,Phone and display in the VF page
+ 15) Create Sobject Contact with LastName,FirstName,Email,Phone and display in the VF page
+ 16) Create Sobject Case with Subject,Origin,Priority and display in he VF page
+ 17) Create Sobject Opportunity with Name,Amount,StageName,closeDate and Display in the VF page
+ 18) Create List of Account and display in the VF Page
+ 19)  Create List of Contct and display in the VF page
+ 20) Create a List of Opportunity and display in the VF Page
+ 21) Create a List of Case and display in the VF Page
+ 22) Create List of Integers and display in the VF page
+ 23) Create List of Integers and print their sum in the VF Page
+ 24) Create List of Integers and print max value in the VF page
+ 25) Create List of Strings and print them in the VF page
+ 26) Create any list and find its size, sort the list and clone that list,get any index element from the list,add and addAll elements in the list.remove any element in the list.Check whether list is empty or not.Display trueif list is empty or false if list is not empty in VF page.
+ 27) Create a number list and sort that list and display in VF page
+ 28) Create a set of integers and display the data in the VF page
+ 29) Create a Set of String and display the data in the VF Page
+
+  ====
+ 1) Write SOQL to fetch data from Account and display data in VF Page
+ 2) Write SOQL to fetch data from Contact and display data in VF Page
+ 3) Write SOQL to fetch data from Case and display data  in VF page
+ 4) Write  SOQL to fetch data from user object and display in VF page
+ 5) Write  a SOQL to fetch account records which are created today
+ 6) Write a SOQL to fetch opportunity records which are closed this month
+ 7) Write  a SOQL to fetch opportunity records which are created in last year
+ 8) Write a SOQL to fetch all Accounts including records in Recyclebin
+ 9) Write  a SOQL to fetch Users whose profile is System Admin
+ 10) SOQL to fetch last 10 opportunity records based on closed date.
+ 11) SOQL to fecth all records from Account
+ 12) SOQL to fetch first 5 Acocunt records based on createdDate.
+ 13) SOQL query to fetch last 20 opportunity records  based on closed date
+ 14) Fetch all the case records and display first 10 case records based on createdate
+ 15) SOQL to fetch all Account records whose industry is Banking or energy or education
+ 16) soql to fetch all the lead records whose leadSource is email,phone, web;
+ 17) soql to fetch all the account records whose names are in list
+ 18) Fetch all the opportunity records whose  account is industry is energy
+ 19) SOQL query to fetch all the case records whose priority is Normal or High  
+ 20) soql query to fetch all the cases of those accounts whose rating is Hot.
+ 21) How to lock the records
+ 22) SOQL Query to fetch all the contact records whose lastname ends with s
+ 23) soql query to fetch all the Opportunity records whose opportunity name contains'salesforce'
+ 24) SOQL to fetch all the account records created in the last year
+ 25) soql to fetch all the opportunity records which are going to closed in next 15 days
+ 26) soql to fetch all the application records which are Approved in last week
+ 29) Fetch all the Account records with list of corresponding  contacts and replace contacts otherphone as accounts phone
+
+ Triggers:
+ ========
+ 
+ 1) When a new Account is inserted with Industry as Banking  then set the annual revenue as 50000
+ 2) create an insert  trigger on Lead ,which will update rating as hot,whenever new Lead record is created.
+ 3) create a  new trigger on opportunity which will set the stage name is prospecting and close date is 15 days from today.
+ 4) create a trigger on opportunity which will set the opportunity type as new customer.
+ 5) create a trigger on account which will set the ownership as public 
+ 6) When ever new Account is inserted with industry as Energy and Type as new Customer then create new Opportunity with same account data
+ 7) whenever an account name is modified send an email notification to the contact of an Account. 
+ 8) When a new  Account is inserted  with Industry as banking  assign the owner as  'karthic'
+ 9) whenever an opportunity name is modified , create a task to the owner of the record
+ 10) write a trigger to prefix Account name with Ms./Mr./Mrs. When ever new record is inserted
+ 11) When a new Account record is created with Industry as Banking and AnnualRevenue more than 5lacs then add karthic as Account team membere
+ 12) When a new Contact  is inserted  with out Account then throw error message 
+ 13) When  a new Account record is inserted check wheather any duplicate Account exists based on Account Name,Industry  if duplicate record found throw error message
+ 14) whenever contact is deleted , delete the corresponding account records.
+ 15) When a new Case is created with case origin as Web then add the user karthic as CaseTeamMember
+ 16) When ever new Opportunity is created with Opportunity amount more than 5 lacs create a Karthic as OpprotunityTeamMember
+ 17) When a new Account is created  with  Account Type as Customer then Create new Task  for the owner of the record and send email alert to the owner
+ 18) whenever new account is created , submit  the record for approval 
+ 19) when the rating of an account is modified to Hot, share the record with wilson using apex based sharing rules
+ 20) whenever a new account is created, create a new contact for the account
+ 21) whenever a new contact is created, create an event for it.
+ 22) whenever new record is created into Account object , before this new record is inserted delete the accounts with the same name.
+ 23) While inserting new record , if any duplicate records are existing with same account name , it should prevent ducplicate record.Try with both scenarios using trigger and Apex class
+ 24) when the Account phone number is modified , update all the corresponding contacts and other phone numbers as  Account's new phone number                                                                 
+ 25) whenever a new record is created into Account object,before this new record is inserted into Account,delete all the contacts records with this account name
+ 26) whenever new contact is created for an account,update the corresponding account phone,with the new contact phone field.
+ 27) when a user is deactivated , assign all the opportunities own by this user to wilson
+ 28) 1.create an insert trigger on Account which will update the description as hello.2.create an insert trigger on Account which will set the industry as banking 3.Create an insert trigger on Account which will set the ownership as public  and rating as hot and phone as 111.4.create a new trigger on opportunity which will set the stage name as prospecting and closeDate is 15days from today.5.Create a new trigger on  opportunity which will set the opportunity type as new customer.6.Create an insert trigger on Lead which will update rating as hot,whenever new Lead record is created.
+ 29) Write a trigger to maintain number of opportunities assigned to an account,when we are inserting new opportunity for an account, that optycount field  value in Account objet  should increment , when we are deleting opportunity corresponding account optycount field value should decrement.It should behave like rollup summary field.
+ 30) create the Account Trigger to roll up the Amount field on all Open Opportunities and store it in a Account field called "Total Pipeline".(It should behave like roll up summary field)
+ 31) Display all trigger context variables in Apex class using debugs
+ 32) Implement a trigger to restrict the opportunity creation to 5 records based on created date
+ 33) populate the account field type on the contact record(only in insert criteria)
+ 34) When ever the opprotunity Stage is changed to closed won share the opportunity with karthic with read access
+ 35) "When ever new lead is inserted calculate the lead score based on following rules 
+      Field Name          Points(if the field values are entered)
+      Phone                 10
+      Email                 10
+      AnnualRevenue         20
+      Industry              20
+       Subject              10
+      Create Custom Field   Number Field  LeadScore .  Assign the Lead score based on above  fields"
+ 36) "When a new Account is created ,check for the duplicate based on name,industry,phone. using trigger
+     a.if a duplicate record is found then throw error message
+     b.if duplicate record is not found ,
+      1.check rating :
+         If rating is hot ---  system administrator should be owner
+         if rating is not hot---wilson should be the owner of the record
+     2.If annualrevenue is more than 50Laks then create Wilson as AccountTeamMember
+       c.when we try to delete the Account,which has a contact then throw error message and send email to owner of the record with list of contacts which are existing for this Account."
+ 37) "Whenever new Account is inserted or updated with match billing address checkbox is checked and billing postal code is not null,
+        Then shipping address postal code should set as billing address postal code "
+ 38) Apex trigger for Opportunity that adds a task to any opportunity set to 'Closed Won'(Insert and update scenario)
+ 39) Implement a trigger that adds the Opportunity Owner into the sales team automatically whenever the Opportunity is created.
+ 40) Implement a trigger to prevent accounts with specific record types from being deleted
+ 41) Create a new Custom objects Application and BlackList Object Name Field Names Application Name,Pancard ,Phone BlacKList Name,Pancard,phone a. When ever we are inserting new Application it has to check pancard no of the new application record is in the Black list or not . b.If the pancard of the Appliction is in the blacklist object then update the blackList phone with new application phone no and throw error
+ 42) "Whenever new Lead is created we have to check for users who have the less number of leads, we have to assign that lead to that particular user.
+ 43) "When a closedwon custom checkbox is cheked in Account, corresponding Opportunity,Quote and QuoteLineItems 
+         ClosedWon checkbox also should be checked."
+
+  Batch Apex:
+  ==========
+ 
+ 1) create a batch apex to update all the opportunities closed date as  15 days from today
+ 2) Write a batch apex to fetch all the leads and update their lead source as email
+ 3) write a batch apex to fetch all the account records and update their ownership as public. 
+ 4) Write a batch apex to fetch all the tasks assigned to the user and set the status as closed
+ 5) Create a batch apex to delete all the account records created today. 
+ 6) write a batch apex to delete all the contacts of the accounts which are created in the last month.
+ 7) write a batch apex to delete all the opportunities of those accounts which are created in the last 15 days.
+ 8) write a batch apex to delete all the opportunities which are going to be closed in the next month.
+ 9) write a batch apex to delete all the opportunities which are closed in the last month.
+ 10) write a batch apex to reassign all the opportunities to Wilson
+ 11) write a batch apex to group all the account records based on the owner and send an email to the list of accounts 
+ 12) Create a batch Apex which fetch all the account Records from Account  which are owned by the user whose profile is System Admin and re-assign to User whose profile is CapitalInfo
+ 13) Create a batch apex to fetch all the records from Account object  and send the email  to all the users withPDF attachment which contains records owned by the user .
+ 14) Create batch apex which takes the query using construtor and update all the description field as batch  update 
+ 15) Create a batch apex which  removes all the  opporunity records which are created in last three months 
+ 16) Create a batch apex which  will update the Country of all the Account records as 'IND
+ 17) Implement a batch apex class to update any sobject field value by passing values dynamically . That class should update any filed value  of any object whatever you are passing dynamically  
+
+ 
+ Schedule Apex:
+ =============
+	
+ 1) Implement schedule Apex class to send an email on every day for every 1 hour
+ 2) Create a Schedule Apex class to implement below functionality.It should check open opportunities which should have closed by the tomorrow ,and creates a task on each opportunity to remind the owner to update the opportunity.Run this schedule every day at 10:15AM 
+
+  DMLStatements:
+  =============
+
+1.Create one Account record and insert it to Database
+2.Create 2 opportunities records and insert those to DB.
+
+----------------
+
+1.Create new Account record and insert three contacts for that Account.
+2.Create new Account record and insert three opportunities for that Account.
+3.Create new Account record and insert three cases,three tasks,three attachments for that Account.
+4.Create a Student object (Fields : LastName,FirstName),Custom Object (Course Name,City).
+  Create a Student Lookup Field on Course object . Create a new Student and 3 courses using DML
+5.Create a method to insert  Account  and User,handle Mixed DML Exception
+6.Create  Group and add GroupMember and handle Mixed DML Exception
+----------------
+
+1.Update one Opportunity record StageName as closedWon.
+2.Update one Account record billing city to 'Hyderabad'
+3.Update 5 contact records phone numbers as 111
+4.Update all contacts title to 'Analyst'
+
+---------------
+
+Upsert Scenarios
+
+1.upsert Account records
+2.upsert Account records with 1 field
+
+
+---------------
+
+
+1.Delete 5 Account records 
+2.undelete Account records
+3.undelete Lead records
+
+----------------
+
+Merge Scenarios
+
+1.Merge 2 Account records
+
+-----------------
+
+Perform Database DML operations also like
+
+Database.insert()
+Database.update()
+Database.delete()
+Database.upsert()
+Database.undelete()
+Database.merge()
+
+------------------
+
+SOQL NEW TASKS:
+==============
+
+Section-A
+1)Write SOQL to fetch data from Account and display data in VF Page
+2)Write SOQL to fetch data from Contact and display data in VF Page
+3)Write SOQL to fetch data from Case and display data  in VF page
+4)Write  SOQL to fetch data from user object and display in VF page
+
+--------
+
+5)Write  a SOQL to fetch account records which are created today
+6)Write a SOQL to fetch opportunity records which are closed this month
+7)Write  a SOQL to fetch opportunity records which are created in last year
+8)Write a SOQL to fetch all Accounts including records in Recyclebin
+9)Write  a SOQL to fetch Users whose profile is System Admin
+
+
+--------------
+Section-B
+1.SOQL to fetch last 10 opportunity records based on closed date.
+2.SOQL to fecth all records from Account
+3.SOQL to fetch first 5 Acocunt records based on createdDate.
+4.SOQL query to fetch last 20 opportunity records  based on closed date
+5.Fetch all the case records and display first 10 case records based on createdate
+6.SOQL to fetch all Account records whose industry is Banking or energy or education
+7.soql to fetch all the lead records whose leadSource is email,phone, web;
+8.soql to fetch all the account records whose names are in list
+9.Fetch all the opportunity records whose  account is industry is energy
+10.SOQL query to fetch all the case records whose priority is Normal or High   
+11.soql query to fetch all the cases of those accounts whose rating is Hot.
+12.How to lock the records
+13.SOQL Query to fetch all the contact records whose lastname ends with s
+14.soql query to fetch all the Opportunity records whose opportunity name contains'salesforce'
+15.SOQL to fetch all the account records created in the last year
+16.soql to fetch all the opportunity records which are going to closed in next 15 days
+17.soql to fetch all the application records which are Approved in last week
+18.Fetch all the Account records with list of corresponding  contacts and replace contacts otherphone as accounts phone;
+19.Create a map with accountName as key and sum of corresponding child opportuntiy amount as value of map. and insert the values.
+20.Write a SOQL to fetch Account record with corresponding contacts,opportunities and cases.
+21.Write a query to fetch all the Account records with corresponding contacts and create a map with contact id as key
+and contact as value?
+22.Write a query to fetch account record with corresponding Opportunties  and create map 
+with account name as key and List of opportunties as value ,
+23.Write a Query on(parent to child and child to parent)
+	a. Account with AccountTeammember 
+	b. Opportunity with OpportunityTeamMember
+	c. Opportuntiy with opportunitylineitem
+	d. Quote with quoteLineItems
+	e. Account with  list of taks
+	f. Contact with List tasks
+	g.  PriceBook with PricebookEntry
+	h. Group with groupmembers
+	i. ChatterPost with ChatterComments
+24. Fetch account duplicate records using soql
+
+---------------------------
+Section-C
+1. Fetch all the products from the product2 object and display in VF page .
+2. Fetch all the Opportunity from the opportunity object and display in VF page .
+3. Fetch all the records from opportunitylineitems and display in the VF page .
+4. Fetch all the Profiles and display in the VF page .
+5. Fetch all the users from the User object and display in the VF page.
+6. Fetch all the cases and display in the VF page 
+7. Fetch all the lead records from Lead object and display in the VF page 
+8.Fetch all the Orders from the orders object and display.
+9. Fetch all the contacts  and display in the VF pages.
+10. Fetch all the Solutions from solution object and display in VF page.
+
+
+---------------------------
+Section-D
+1.Write soql to fetch all the lead records whoes leadsource  is web and display 
+  in VF page
+2.Write soql to fetch all the lead records whose industry is Energy and display 
+  in the VF page.
+3.Write a soql to  fetch all the Account  records whose ownership is public 
+4. Write a soql to fetch all the Account  records whose annualRevenue is more 
+   than 50 Lacs;
+5. Write a soql to fetch all the Opportunity records whose stagename is close won 
+   and display in VF page.
+6. Write a soql to fetch all the opportunity recors whose stagename is closed lost 
+   and  display in VF page 
+7. Write a soql to fetch   all the oppoertunity to fetch all opportunties which are
+   not closed 
+8. Wrire a soql to fetch all the users whose  profile is System Admin.
+9.Write a soql to fetch all the  users whose role is ceo
+
+---------------------------
+Section-E
+1. Write a soql query to fetch all the lead records whose leadsource is web
+    or phone or email .
+2. Write a  soql query to  fetch all the lead records whose leadsource is not 
+   web or phone or email.
+3. Write  a soql query to fetch all the  Account records whose  industry value
+   is Banking ,Energy,Education
+4. Write a soql query to fetch all the Opportunity recrods whose stagename is 
+    not closed won or closed lost.
+
+---------------------------
+Section-F
+1. Write a soql to fetch all the Account records with corresponding contacts   
+   and create Map with Account name as key and List of corresponding contacts as value .
+2. Write a soql to fetch all t he Opportunties of those accounts whose industry is 
+Banking and create a Mapwith Account Id as key and List of Opportunites  as value of map.
+3. Write a soql to fetch opportunity with corresponding opporunityLineItems
+4 .Write a soql to fetch Quote with corresponding quoteLineitems
+5. Write a soql to fetch Order with OrderLineItems 
+6. Write  Soql to fetch Account with corresponding  cases .
+7. Write a soql to fetch  Account with Corresponding AccountTeamMembers
+8. write a soql to  fetch Opportuntiy with OpportunityTeamMember.
+9.Write a soql to fetch Group with corresponding GroupMembers 
+10. Write a  soql to fetch FeedItem with corresponding FeedComment.
+
+
+--------------------------
+Section-G
+1. Fetch all the Account records which are created today .
+2. Fetch all the opportunities whose closeDate is today.
+3. Fetch all the opportunites whose closeDate is next month
+4. Fetch all the opportunities which are created in this week.
+5. Fetch all the leads which are created in last 3 weeks .
+6. Fetch all the Leads which are created are created in the last month with 
+   leadsource as web
+7. Fetch all the Accounts whose are created in the last three months with industry as 
+   banking.
+----------------------------
+Section-H
+1. Write a query to fetch all the Accout records which are owned by user whose 
+		lastname is myla .
+2. Write a query to fetch all the Contacts of those Accounts whose industry is banking
+3. write a query to fetch sum,avg,min,max of Amount from the Opportuntiy .
+4. Write a query to fetch  AVG and MIN of Annualrevenue from Account object 
+    whose industry is Banking
+5. Write a queryt to fetch Sum,Avg of Amount from Opportuntiy object whose stagename 
+    is closedWon.
+6.Write a querty to fetch all Min and Max of annualrevenue from Account object whose 
+  ownership is public.
+7. Write a query to fetch Sum,Min,Max of Amount from Opportunity object group by StageName
+8. Write a soql to return count of Account records whose industry is Energy.
+9.Write a soql to return count of no Opportunities whose stageName is closedWon
+10. Fetch all the account records including the records which are recylebin.
+11. Fetch all the account records which are in recylebin
+12. Write a query to fetch all the lead records created today and lock them from 
+   getting updated .
+
+---------------------------------------
+Section-I
+1.a.Write a soql query to Account(name ,phone ) with corresponding  contacts with 
+	  (id and otherphone )
+	
+b.Update contacts otherphone as Account phone 
+
+2.
+
+a.Write a soql query to fetch all the account records whose industry is Banking 
+b.Write a soql to fetch all the opportunities of those Accounts which are fetched 
+  in above step.
+
+
+3.
+
+a. Write a soql query to fetch all the account records whose rating is warm
+b.Collect Account names from list of Accounts fetched in the above step and place 
+   them in a new list .
+
+4.
+a. Write a soql to fetch all the Account records  whose rating in warm and industry is 
+	Energy .
+	
+b. Create a map with accountId as key and Account as value .
+
+5.
+
+a.Write a soql to fetch all the Account records with corresponding opportunties .  
+b.Create a Map with account id as key and List of Opportunity as value .
+c.fetch all the list of accountId's from Map.
+d.Fetch all the list of opportunities from Map and put them in a single list.
+
+
+6.
+a. Create a wrapper class with  three variables cityName ,place ,phone 
+b. create a List of cityWrapper class and add three records to the list .
+c. create a Map with cityName as key and place as value 
+d. take all the cityNames from the map and create picklist options.
+
+7.
+
+a. create Wrapper class with Account  and List<Opportunity> as datamembers.
+b. Write a soql to fetch account records with corresponding opportunties.
+c. Create List of AccountWrapper class and ,
+d.take one by one element from the accounts list and create new AccountWraper.
+
+8.
+
+a. Write a soql to fetch all the accounts with corresponding contact records.
+b. Keep all the contacts that are fetched in the above query in a single list .
+
+9.
+
+a. Write a soql to fetch all the Account records along with corresponding opportunties
+	where industry  of Account is Banking .	
+b. Create a Map with Account id as key and List of Opportunties as value.	
+c. Take one by one record from accs and add elements to the map.
+d. Fetch all the accountId's from the map.
+e. Fetch all the Opportunties in the map and them to single list 
+
+	
+-----------
+Section-J
+1.Write a SOQL query using Database.query()
+
+
+
+
+
+
+ 
+
+
+

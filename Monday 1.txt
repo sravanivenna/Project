@@ -1,0 +1,119 @@
+MONDAY 1
+----------------------------------
+15. What is a profile? Can two users have the same profile?
+The profile is defined as a collection of rules and procedures a person needs to follow to access particular records. There are multiple profiles available in Salesforce. For example, a sales profile can have access to leads, opportunities, contacts, campaigns, etc.
+
+As far as the second question is considered, the answer would be yes. The people who work in one department have the same profile. So the people who work under a particular department would be assigned with the same profiles.
+
+As we have seen in the sales profile, many people work under it and every person who works under is assigned the same profile. Hence any number of people can have the same profile.
+
+16. Explain the difference between role and profile?
+Role: In Salesforce Role is meant to increase the data visibility to a particular user. It can be done through sharing rules or by building a role hierarchy. Using roles, you can control the ac
+
+Profile: Unlike the roles profile is mandatory for all, and it stays at the object level. It is treated as a building pillar of an organization.
+
+
+
+17. How many relationships do we have in Salesforce?
+We have three types of relationships in Salesforce, which are:
+
+Master-detail relationship
+Lookup relationship
+External Lookup
+18. What is the Master-Detail relationship?
+This Master-Detail relationship is the same as the relationship between a parent & child. In this aspect, the master is treated as  Parent, and the Detail is a child. The master Object takes control of the behavior of the Detail object. The survival of the child is dependent on the parent because if the Master gets deleted the Detail will also automatically get deleted. You can create Roll-up summary fields in master records which helps in calculating the Min, Avg, Sum of the child records.
+
+19. What is a “Lookup Relationship”?
+The relationship between the two objects is called a lookup relationship. Lookup relationships connect two object links together so that you can look up from related items to other items. It can be one-to-one or one to many.
+
+20. What is an External lookup?
+The external lookup relationship is used to connect the child object to the parent object. The child object may be either a custom, standard, or external object. It uses to identify the correct map of the child object with the parent external object. The external lookup relationship values fields are matched against the External Id values. 
+
+21. What is a self-relationship?
+It is a personal look up to the same object. The self-relationship creates a tree diagram of the objects. Let's take an example as an object “merchandise”. In this, we can create relationship merchandise between two accounts. This is called a self-relationship.
+
+22. What is the workflow in Salesforce?  
+ Workflow is an excellent way to automate specific business processes in Salesforce. To do this, you are required to define certain rules and regulations to automate tasks such as sending an email, updating a field, create a task
+
+We can have access to workflow across the object.
+It is not possible to query from the database.
+23. What is meant by “Transfer record” in profile? 
+Transfer record is a type of function used to grant permission. If a user has permission to share a record with others, then he can share the records that have read-only access. 
+
+24. Explain the Salesforce dashboard?
+In Salesforce we use dashboards to represent the data in a pictorial format. Salesforce dashboard is capable of displaying 20 reports at a time.
+
+25. What is SOAP?
+A protocol that defines a uniform way of passing XML-encoded data. SOAP Stands for Simple Object Access Protocol.
+
+26. What is a Time Trigger?
+The computer system executes one or more tasks according to the set of rules and scheduled tasks.
+
+27. What is Trigger in Salesforce?  
+The trigger is defined as an Apex code that executes before or after the following functions such as insert, update, delete, etc. trigger enables to perform custom actions before and after modifications to the records of Salesforce. 
+
+For more details visit - Trigger Scenarios in Salesforce
+28. What are the actions in the workflow? 
+ Below mentioned are the actions in the workflow 
+
+Field update 
+Task
+Outbound message 
+Email alert 
+29. What are the main things that need to consider in the “Master-Detail Relationship”?
+Record level access is determined by the parent, Mandatory on the child for reference of the parent, cascade delete (if you delete the parent, it can cascade delete the child).
+
+Salesforce Intermediate Interview Questions
+30. How many records can be shown in matrix, tabular & summary reports?
+We can create up to 2k records in Matrix, Tabular & Summary Reports.
+
+31. Is the Roll-Up Summary field is only possible in the Master-detail relationship?
+ Yes, it is possible in a master-detail relationship.
+
+32. How many Master-detail relationship fields can be created in an object?
+Maximum two MDR fields can be created in an object.
+
+33. How many LR(lookup relationship) fields can be created in an object?
+Maximum 40 Lookup relationship fields can be created in an object.
+
+34. If we delete parent records in MDR, what happens to the child?
+If you delete the parent record in the MDR, the child record also gets deleted in MDR.
+
+35. What about the undelete option?
+It will restore the record with the data in the object.
+
+36. How many Roll-Up Summary fields can be created in an Object?
+Up to 40 can be created. (before 2010 it is 10 after 2016 it is up to 40 and it will change accordingly to salesforce updates).
+
+37. If we reparent in the object will the parent update?
+Yes, the parent will update the object.
+
+38. How we can create an MDR on those objects where we already have records?
+First, we create LR between the two objects.
+Connect all child records to parents.
+Convert the field type from LR to MDR.
+
+39. How to look at the user license information in Salesforce Org?
+Steps to find out the user license:
+
+Salesforce Org → Setup → Administer → Company Profile → Company Information.
+40. Can we delete a user in Salesforce?
+No, we cannot delete the user in the salesforce. 
+
+41. Can we change the license when we create a profile?
+No, we cannot change the license when we are creating the profile.  
+
+42. Explain about object relationship overview?
+It creates a link between the custom object and the standard object recorded in a related list. This is helpful to find the product's defects.
+
+43. How to create many to many relationships in Salesforce?
+It helps in creating a many-to-many relationship between two objects in Salesforce. Using many-to-many relationships you can connect each record of an object to be linked with multiple records of other objects and vice versa. The junction object helps us in connecting the two selected objects with each other.
+
+salesforce many to many
+
+44. What are the permission sets? 
+A Permissions set is a collection of settings or permissions and is used to extend the user functional access without changing actual profiles. You can use permission sets to various types of users to extend the functionality access regardless of their roles. It is time taking task to create a profile; instead of this, you could easily create a permission set.
+
+45. What is sharing rule?
+If we want to give access to other users we use sharing rules.
+

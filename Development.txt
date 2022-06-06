@@ -1,0 +1,2984 @@
+Wrapper Class:
+A wrapper or container class is a class, a data structure that contains different objects or collections of objects as its members.
+A wrapper class is a custom object defined by a programmer wherein he defines the wrapper class properties.
+For Example, Custom Object have fields and fields have different data types similarly we have custom variables in ApexClass
+
+1.The wrapper class is a class that contains the collection of objects or different objects to store the manipulated values.
+2.The wrapper class will have fields and different data types as Objects.
+ 3.It is used to display different objects on a Visual Force page in same table.
+
+Example:
+
+Wrapper Class:
+
+public class student {
+    public string lastName{set;get;}
+    public string firstName{set;get;}
+    public integer age{set;get;}
+
+}
+
+Apex Class Controller:
+
+public class student_Example {
+    public student std{set;get;}
+    public student_Example()
+    {
+       std=new student();
+        std.lastName='ammu';
+        std.firstName='Gudi';
+        std.age=8;
+    }
+}
+
+
+Vf page:
+
+
+<apex:page controller="student_Example">
+    <strong>LastName: </strong>{!std.lastName}<br/>
+    <strong>FirstName: </strong>{!std.firstName}<br/>
+    <strong>Age: </strong>{!std.age}
+</apex:page>
+
+
+
+2.Arrays:
+
+*Array is collection of simillar elements
+*memory will be allocated sequencially
+*Element are accessed in the array using index
+*index start with 0
+
+Disadvantage is size is fixed we can not increased and descresed based on requirement
+
+syntax:
+
+DataType[]  varname=new DataType[size];
+Ex:String[]  str=new String[5];
+str[0]='ammu1';
+str[1]='ammu2';
+str[2]='ammu3';
+str[3]='ammu4';
+str[4]='ammu6';
+  
+Example:
+
+string[] names=new string[2];
+names[0]='ammu';
+names[1]='sai';
+system.debug(names);
+
+statically syntax:
+
+DataType[]  varName=new DataType[]{values}
+
+integer[]  int=new integer[]{1,2,3,4,5};
+
+Example1:
+
+integer[]  int=new integer[]{1,2,3,4,5};
+    for(integer i=0;i<=int.size();i++)
+{
+    system.debug(int[i]);
+}
+
+ Example2:
+
+string[] citys=new string[]{'hyd','bng','che'};
+    for(integer i=1;i<=citys.size();i++)
+{
+    system.debug('index: '+i);
+    system.debug('City Name: '+citys[i] );
+}
+
+       (or)
+
+
+string[] citys=new string[]{'hyd','bng','che'};
+   for(string c:citys)
+{
+    system.debug(c);
+}
+
+
+Example3:Find min value       
+                                                                                                                             //error:List index out of bounds: 6
+integer min=0;
+integer [] val=new integer[]{25,37,90,40,10,687};
+    for(integer i=1;i<val.size();i++)
+{
+    if(val[i]<val[min])
+    {
+        min=i;
+    }
+    
+}
+system.debug(val[min]);
+
+
+Example3:Find max value      
+
+
+integer max=0;
+integer[] num=new integer[]{19,68,38,980,10,68,456,90};
+    for(integer i=1;i<num.size();i++){
+        if(num[i]>num[max])
+        {
+            max=i;
+        }
+    }
+system.debug(num[max]);
+
+
+Example:print the 0dd numbers and even numbers from 1-100
+
+
+ if(math.mod(i,2)==0)
+    {
+
+        system.debug('Event numbers is: '+i);
+    }
+    else
+    {
+        system.debug('Odd numbers is: '+i);
+    }
+
+
+Example 4:Create wraper class and store values on array 
+
+
+
+wrapper[] details=new wrapper[2];
+ 
+wrapper w1=new wrapper();
+w1.lastName='Ammu';
+w1.firstName='maddipatla';
+w1.age=6;
+details[0]=w1;
+
+wrapper w2=new wrapper();
+w2.lastName='sai';
+w2.firstName='maddipatla';
+w2.age=8;
+details[1]=w2;
+
+for(integer i=0;i<details.size();i++)
+{
+    system.debug(details[i].lastName);
+    system.debug(details[i].firstName);
+    system.debug(details[i].age);
+}
+ 
+(or)
+
+wrapper[] details=new wrapper[2];
+ 
+wrapper w1=new wrapper();
+w1.lastName='Ammu';
+w1.firstName='maddipatla';
+w1.age=6;
+details[0]=w1;
+
+wrapper w2=new wrapper();
+w2.lastName='rani';
+w2.firstName='maddipatla';
+w2.age=8;
+details[1]=w2;
+
+for(wrapper w:details)
+{
+    system.debug(w.lastName);
+    system.debug(w.firstName);
+    system.debug(w.age);
+}
+
+*Account we called as object in admin in programming we call as sobject  sobject means Account apex  class it is already created by salesforce.so we no need create saperated class for that 
+we want to object we have to create intance of class that is called object
+
+
+Example 5:
+
+Account[] acc=new Account[2];
+Account a=new Account();
+a.Name='ammu';
+a.phone='21739237';
+acc[0]=a;
+Account a1=new Account();
+a1.Name='rani';
+a1.phone='17826826';
+acc[1]=a1;
+for(Account a2:acc){
+    system.debug('Name: '+a2.Name+' Phone: '+a2.phone);
+}
+
+ (or)
+
+Account[] acc=new Account[2];
+Account a=new Account();
+a.Name='ammu';
+a.phone='21739237';
+acc[0]=a;
+Account a1=new Account();
+a1.Name='rani';
+a1.phone='17826826';
+acc[1]=a1;
+for(integer i=0;i<acc.size();i++)
+{
+    system.debug('Name: '+acc[i].Name+' Phone: '+acc[i].phone);
+}
+
+
+
+
+------------------List------------------------
+1.list is a collection.
+2.list is a collection of similar element.
+3.size of the  list can grow or reduce based on run time requirement.
+4.elements in the list reffered  with index
+5.index value start with 0
+6.list maintains insertion order
+7.list accept duplicate values
+
+
+Methods:
+
+List<String> cities=new List<String>{'Hyd','Bng','Che'};
+//Methods
+//1.add(element)
+cities.add('Mum');
+system.debug(cities);
+//2.add(index,element)
+cities.add(1,'Ray');
+system.debug(cities);
+//3.get(index)
+string city=cities.get(3);
+system.debug(city);
+//4.remove(index)
+cities.remove(0);
+system.debug(cities);
+//5.clear()
+cities.clear();
+system.debug(cities);
+//6.isEmpty()
+Boolean empty=cities.isEmpty();
+system.debug(empty);
+//7.size()
+integer size=cities.size();
+system.debug(size);
+//8.addAll(listofElements(or)setofElements)
+List<String> names=new List<String>{'Ammu','Baby'};
+cities.addAll(names);
+system.debug(cities);
+set<String> education=new set<String>{'SSC','Inter','B.Tech'};
+cities.addAll(education);
+system.debug(cities);
+//9.sort() this method display the elements on ascending order
+cities.sort();
+system.debug(cities);
+
+1.create wrapper class with name,age,education,phone and store the values in list
+
+
+Wrapper Class:
+
+public class listWrapper {
+public string name;
+public integer age;
+public string phone;
+}
+
+
+List:
+
+List<listWrapper> details=new List<listWrapper>();
+listWrapper d1=new listWrapper();
+d1.name='ammu';
+d1.age=6;
+d1.phone='87997';
+details.add(d1);
+listWrapper d2=new listWrapper();
+d2.name='baby';
+d2.age=25;
+d2.phone='688909';
+details.add(d2);
+system.debug(details);
+string n=details[0].name;
+system.debug(n);
+
+Example1:
+
+
+Apex Class:
+
+public class AccountWrapper {
+    public Account acc{set;get;}
+    public List<Account> accounts{set;get;}
+    public AccountWrapper()
+    {
+        acc=new Account();
+        accounts=new List<Account>();
+    }
+    public void addAcc()
+    {
+        accounts.add(acc);
+        acc=new Account();
+    }
+    public void clearAccounts()
+    {
+        accounts.clear();
+    }
+}
+
+1.Rendered:
+A Visualforce component in a VF page can be displayed or hidden by using a rendered attribute. Rendered is bound to a Boolean variable in the controller which can be switched between true and false making the VF component display or hide depending on a Boolean value.
+
+
+Vf:
+
+<apex:page controller="AccountWrapper">
+   <apex:form>
+        <apex:pageBlock id="fm" title="Account">
+            <apex:pageBlockButtons>
+                <apex:commandButton value="add" action="{!addAcc}" reRender="fm"/>
+                <apex:commandButton value="clear" action="{!clearAccounts}" reRender="fm"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection>
+                <apex:inputText value="{!acc.Name}"/>
+                <apex:inputText value="{!acc.AnnualRevenue}"/>
+                <apex:inputText value="{!acc.Phone}"/>
+                <apex:inputText value="{!acc.Industry}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="1" rendered="{!accounts.size>0}">
+                <apex:pageBlockTable value="{!accounts}" var="a">
+                    <apex:column value="{!a.Name}"/>
+                    <apex:column value="{!a.AnnualRevenue}"/>
+                    <apex:column value="{!a.Phone}"/>
+                    <apex:column value="{!a.Industry}"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
+
+
+  Example2:
+
+Wrapper:
+
+
+public class AccConWrapper {
+    public Account acc{set;get;}
+    public Contact con{set;get;}
+   /*public AccConWrapper()
+    {
+        acc=new Account();
+        con=new Contact();
+    }*/
+}
+
+
+Apex:
+
+public class AccConController {
+    public AccConWrapper ac{set;get;}
+    public List<AccConWrapper> accounts{set;get;}
+    public AccConController()
+    {
+        accounts=new List<AccConWrapper>();
+        ac=new AccConWrapper();
+        ac.acc=new Account();
+        ac.con=new Contact();
+        
+    }
+    public void addElm()
+    {
+        accounts.add(ac);
+          
+    }
+}
+
+
+
+VF:
+
+
+<apex:page controller="AccConController">
+    <apex:form >
+      <apex:pageBlock title="Account-Contact" id="pb">
+          <apex:pageBlockButtons location="top">
+                     <apex:commandButton value="add" action="{!addElm}" reRender="pb"/>
+          </apex:pageBlockButtons>
+         <apex:pageBlockSection title="Account">
+                 <apex:inputText value="{!ac.acc.Name}"/>
+                 <apex:inputText value="{!ac.acc.AnnualRevenue}"/>
+                 <apex:inputText value="{!ac.acc.Phone}"/>
+                 <apex:inputText value="{!ac.acc.Rating}"/>
+          </apex:pageBlockSection>
+          <apex:pageBlockSection title="Contact">
+              <apex:inputText value="{!ac.con.FirstName}"/>
+              <apex:inputText value="{!ac.con.LastName}"/>
+          </apex:pageBlockSection>
+        <apex:pageBlockSection columns="1" rendered="{!accounts.size>0}">
+            <apex:pageBlockTable value="{!accounts}" var="a">
+                <apex:column value="{!a.acc.Name}"/>
+                <apex:column value="{!a.acc.AnnualRevenue}"/>
+                <apex:column value="{!a.acc.Phone}"/>
+                <apex:column value="{!a.acc.Rating}"/>
+                <apex:column value="{!a.con.FirstName}"/>
+                <apex:column value="{!a.con.LastName}"/>
+            </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
+
+Example3:
+
+Create Wrapper class AccountInfo with one Account and one Boolean
+
+public class   AccountInfo ()
+{
+public Account acc;
+public boolean  flag;
+}
+
+Create object for the wrapper assign the values
+
+AccountInfo  ac=new AccountInfo ();
+ac.acc=new Account();
+ac.acc.Name='ammu';
+ac.acc.Phone='2809289';
+ac.details=flag;;
+
+Example 4:
+
+Create Wrapper class contactData with one Contact and email,age varaible
+
+public class contactData ()
+{
+public Contact con;
+public integer age;
+public string email;
+}
+
+
+Create object for the wrapper assign the values
+  
+contactData  cons=new contactData ();
+cons.con.FirstName='ammu';
+cons.con.LastName='gudi';
+cons.age=8;
+cons.email='sukanya.gmail.com';
+
+
+Example5:Create Wrapper class studentInfo with lastname,firstName,phone and assign values and add values to the list<contact>
+
+Wrapper Class:
+
+
+public class StudentWrapper {
+ public string LastName;
+    public string FirstName;
+    public string Phone;
+ 
+}
+
+StudentWrapper s1=new StudentWrapper();
+s1.LastName='ammu';
+s1.FirstName='gudi';
+s1.Phone='87927';
+StudentWrapper s2=new StudentWrapper();
+s2.LastName='rani';
+s2.FirstName='Maddipatla';
+s2.Phone='79879';
+List<StudentWrapper> students=new List<StudentWrapper>{s1,s2};
+List<Contact> cons=new List<Contact>();
+for(StudentWrapper s:students)
+{
+    Contact c=new Contact();
+    c.LastName=s.LastName;
+    c.FirstName=s.FirstName;
+    c.Phone=s.Phone;
+    cons.add(c);
+}
+
+system.debug('cons'+cons);
+
+Example5:Create Wrapper class studentInfo with lastname,firstName,phone ,Name,Industry,Ratingand assign values and add LastName,FirstName,Phone in to the list<contact> and Name,Industry,Rating into Account List
+
+Wrapper Class:
+
+public class StudentWrapper {
+    public string LastName;
+    public string FirstName;
+    public string Phone;
+    public string Name;
+    public string Industry;
+    public string Rating;
+}
+
+
+
+
+
+StudentWrapper s1=new StudentWrapper();
+s1.LastName='ammu';
+s1.FirstName='gudi';
+s1.Phone='87927';
+s1.Name='ammu';
+s1.Industry='Education';
+s1.Rating='Hot';
+StudentWrapper s2=new StudentWrapper();
+s2.LastName='rani';
+s2.FirstName='Maddipatla';
+s2.Phone='79879';
+s2.Name='sai';
+s2.Industry='Banking';
+s2.Rating='Cold';
+List<StudentWrapper> students=new List<StudentWrapper>{s1,s2};
+List<Contact> cons=new List<Contact>();
+List<Account> acc=new List<Account>();
+for(StudentWrapper s:students)
+{
+    Contact c=new Contact();
+    c.LastName=s.LastName;
+    c.FirstName=s.FirstName;
+    c.Phone=s.Phone;
+    cons.add(c);
+    Account a=new Account();
+    a.Name=s.Name;
+    a.Industry=s.Industry;
+    a.Rating=s.Rating;
+    acc.add(a);
+    system.debug('acc'+acc);
+}
+
+system.debug('cons'+cons);
+
+----------------------Set-------------------------
+
+1.set is a collection similar elements.
+2.set size is increase or reduce dynamically based on run time requiremnt
+3.set not allow the dupilcate values
+4.set not maintain the insertion order;.
+5.You cannot perform DML with Set. 
+-----------------------methods----------------
+
+set<string> names=new set<string>();
+//1.add(elements)
+names.add('ammu');
+names.add('sai');
+names.add('rani');
+system.debug('Add: '+names);
+//2.addAll(set of elements or list of elements)
+set<string> n=new set<string>{'baby','sukku','prudhvi','rani'};
+    names.addAll(n);
+system.debug('AddAll: '+names);
+//3.remove(element)
+names.remove('baby');
+system.debug('remove: '+names);
+//4.removeall(listofelm (or) setofelm)
+names.removeAll(n);
+system.debug('removeAll: '+names);
+//5.conatains(elm)
+boolean s=names.contains('sukku');
+system.debug('conatains: '+s);
+set<string> s2=new set<string>{'ammu','sai'};
+//6.conatainsAll(listofelm (or) setofelm)
+boolean s1=names.containsAll(s2);
+    system.debug('conatainsAll: '+s1);
+//7.clear()
+names.clear();
+system.debug('Clear: '+names);
+
+
+--------------------------------------------------------------------------------------------------
+
+  Wrapper class:  
+
+public class StudentWrapper {
+    public string LastName;
+    public string FirstName;
+    public string Phone;
+    public string Name;
+    public string Industry;
+    public string Rating;
+}
+
+                                                                                                                                  output:students{StudentWrapper:[FirstName=gudi, Industry=null, LastName=ammu, Name=null, Phone=null, Rating=null], StudentWrapper:     StudentWrapper s1=new StudentWrapper();                                                                                                                                                                      [FirstName=gudi, Industry=null, LastName=ammu, Name=null, Phone=null, Rating=null]}
+s1.LastName='ammu';
+s1.FirstName='gudi';
+StudentWrapper s2=new StudentWrapper();
+s2.LastName='ammu';
+s2.FirstName='gudi';
+set<StudentWrapper> students=new set<StudentWrapper>{s1,s2};
+    system.debug('students'+students);
+------------------------------------------------------------------------------
+
+Account a1=new Account();                                    output:Account:{Name=ammu, Phone=9319379}, Account:{Name=ammu, Phone=9319379}
+a1.Name='ammu';
+a1.Phone='9319379';
+Account a2=new Account();
+a2.Name='ammu';
+a2.Phone='9319379';
+List<Account> accounts=new List<Account>{a1,a2};
+system.debug(accounts);
+   
+--------------------------------------------------------Map--------------------------------------------
+1.Map is key value pair.
+2.key conatins unique value value allows duplicate values.
+3.it is used search values easily using key.
+--------------------------------Methods--------------------------------------------
+Map<integer,string> citys=new Map<integer,string>();
+//1.put(key,value)
+citys.put(1,'bng');
+citys.put(2,'hyd');
+system.debug(citys);
+//2.get(Key)
+string I=citys.get(1);
+system.debug(I);
+//3.keyset()
+set<integer> keys=citys.keyset();
+system.debug(keys);
+//4.values
+list<string> values=citys.values();
+system.debug(values);
+//5.conatains(key)
+boolean b=citys.containsKey(1);
+system.debug(b);
+//6.size()
+integer size=citys.size();
+system.debug(size);
+//7.clear()
+citys.clear();
+system.debug(citys);
+
+Example 1:
+
+1.Create wrapper class student  with firstname and lastname
+
+public class StudentWrapper {
+    public string LastName;
+    public string FirstName;
+    
+}
+
+2.create a  map with firstname as key and last name as value
+3.Take one by one record from the above list create data in map
+ 
+StudentWrapper s1=new StudentWrapper();
+s1.FirstName='ammu';
+s1.LastName='gudi';
+StudentWrapper s2=new StudentWrapper();
+s2.FirstName='baby';
+s2.LastName='maddipatla';
+List<StudentWrapper> students=new List<StudentWrapper>{s1,s2};
+Map<String,String> names=new Map<String,String>();
+for(StudentWrapper s:students)
+{
+    names.put(s.FirstName,s.LastName);
+}
+system.debug(names); 
+
+
+4.get all firsnames
+
+set<String> keys=names.keySet();
+system.debug(keys);
+
+5.get all lastnames
+
+List<String> values=names.values();
+system.debug(values);
+
+
+
+Example2:
+
+1.Create wrapper class Employee with empId,salary,exp 
+
+public class Employee {
+public string empId;
+public integer salary;
+public integer exp;
+}
+
+2.create a  map with empId as key and Employee as value
+
+   Map<String,Employee> empMap=new Map<String,Employee>();
+
+3.Take one by one record from the above list create data in map
+
+Employee e1=new Employee();
+e1.empId='Emp1';
+e1.salary=1000;
+e1.exp=5;
+Employee e2=new Employee();
+e2.empId='Emp2';
+e2.salary=2000;
+e2.exp=2;
+Employee e3=new Employee();
+e3.empId='Emp3';
+e3.salary=2000;
+e3.exp=3;
+List<Employee> emps=new List<Employee>{e1,e2,e3};
+    Map<String,Employee> empMap=new Map<String,Employee>();
+for(Employee e:emps)
+{
+    empMap.put(e.empId,e);
+}
+ system.debug('empMap '+empMap);
+
+
+4.get all empId
+
+set<String> keys=empMap.keySet();
+ system.debug('keys '+keys);
+
+5.get all Employees
+
+list<Employee> values=empMap.values();
+ system.debug('values '+values); 
+
+6.get All  those employees who exp is 3 years
+
+set<String> key=empMap.keySet();
+List<Employee> employees=new List<Employee>();
+for(String s:key)
+{
+    Employee emp=empMap.get(s);
+    if(emp.exp==3)
+    {
+        employees.add(emp);
+    }
+}
+system.debug('employees'+employees);
+
+Example3:
+
+1.Create map with key as cityName and value as placess
+
+Map<string,List<string>>  citys=new Map<string,List<string>>();
+List<string> hydplace=new List<string>{'SRNagar','KPHB'};
+List<string> bngplace=new List<string>{'marathali','ElcCity','whitefield'};
+citys.put('Bang',bngplace);
+citys.put('hyd',hydplace);
+system.debug('Citys'+citys);
+
+2.getAll cityNames
+
+set<string> city=citys.keySet();
+system.debug('keys'+citys); 
+
+3.get All placess
+
+List<List<string>> places=citys.values();
+system.debug('places'+places);
+
+
+
+
+----------------------------------------------------------------------SOQL----------------------------------------------------
+1.salesforce object query language
+2.it is similar to sql
+3.it is fetch the data from sobject
+4.it is also fetch the data from related object using relationship fields
+5.it is return the result in the form of List<sobject> or map<id,sobject>
+6.it is return the maximum of 50000 records in single call
+
+Link:https://www.sfdcamplified.com/2021/04/interview-questions-on-soql-in-salesforce.html
+
+-----------------------------------------------------------------------
+
+Q.What is difference between SOSL and SOQL?
+
+SOQL (Salesforce Object Query Language)	          SOSL (Salesforce Object Search Language)
+Only one object can be searched at a time	          Many objects can be searched at a time
+Can query any type of field                                       	          Can query only on email, text or phone
+Can be used in classes and triggers	                             Can be used in classes, but not triggers
+DML Operation can be performed on query results   DML Operation cannot be performed on search results
+Returns records	                                                                 Returns fields
+
+Parent to Child( Inner query )
+
+ Whenever we writing query on Parent Object, we need child records that are associated with that parent then we go for inner query 
+    Standard Objects:  
+          SELECT Id,Name,(SELECT Id,Name FROM Contacts) FROM Account
+              Account : Parent Object
+              Contact  : Child Object
+* Inside inner query we need to give relationship name. In the above example Contacts is the relationship name between Account and Contact.
+
+  Custom Objeccts: 
+  SELECT Id,Name,(SELECT Id,Name FROM Student1__r) FROM Company__c;
+        Company__c : Parent Object
+         Student__c    :  Child Object
+         Relationship name between this Objects Student1. 
+        For Custom Objects we need to append with __r.
+        i.e Student1__r.(Child relationship name __r).
+
+Child to Parent
+  When we are writing query on child object, but  we also need parent of that child record means then we go for Child to Parent Query.
+ 
+Standard Objects:
+ SELECT Id,Name,Account.Name,Account.Active__c FROM Contact;
+            Contact: Child Object
+            Account : Parent Object
+We can query parent record fields with .(dot) notation
+
+Custom Objects:
+SELECT Id,Name,Company__r.Name,Company__r.Active__c FROM Student__c;
+            Company__c : Parent Object
+            Student__c    : Child Object
+* for custom objects we need to use Parent__r.FieldName 
+
+Note: When we are writing a query from child to parent, relationship name will be Master-Detail Field Name or Lookup Field Name.
+
+Queries can be executed in formats like:
+List<Sobject> result = [query statements];
+List<sObject> result = Database.getQueryLocator
+Database.QueryLocator  result = Database.getQueryLocator(query Statement);
+Map<Id,sObject> result = new Map<Id,sObject>([query statement]);
+Date Literals(Keywords) in Salesforce
+    DATE and TIME  keywords
+
+    TODAY, YESTERDAY,  THIS_WEEK,  NEXT_WEEK,  LAST_WEEK
+    LAST_N_WEEK:N,   NEXT_N_WEEK:N
+
+    DATE and TIME methods 
+    calender_month()
+    calender_quarter()
+    calender_year()
+    Day_month()
+    Day_week()
+
+Query Examples:
+
+1. Write a query to fetch Accounts that do not have any Contacts?
+
+Ans: [SELECT  Id,Name FROM Account WHERE  Id  NOT  IN(SELECT AccountId FROM Contact)];
+
+2. Write a query to fetch Accounts that have atleast one Contact?
+
+Ans:[SELECT  Id,Name FROM Account WHERE  Id  IN(SELECT AccountId FROM Contact)];
+
+3. There is a Queue with name MyQueue. How to query it using SOQL from the database?
+
+Ans: Queues will store in Group Object. To query for MyQueue from the database using SOQL, we should use the following syntax.
+Group grp=[SELECT Id,Name FROM Group WHERE Name='MyQueue' and  Type='Queue' LIMIT 1];
+
+4. How to query deleted records in Salesforce?
+
+Ans: We can query deleted records using   isDeleted=TRUE and ALLROWS. 
+List<Account> acc=[SELECT Id,Name,IsDeleted  FROM Account  WHERE  IsDeleted=TRUE];
+
+5. Write SOQL to fetch  from 5th osition  Account records from 10 records.
+Ans:
+  List<Account> accs=[SELECT  Id,Name, FROM  Account  LIMIT 10  OFFSET 5];
+
+6.Write a SOQL query to fetch last or recently  10 Accounts created.
+Ans:
+ List<Account> accounts=[SELECT Id,Name FROM Account  ORDER BY  DESC  LIMIT 10 ];
+
+7. Write a SOQL query to fetch all those opportunities whose Stageame is prospecting and amount is greater han 50000?
+Ans:
+  List<Opportunity> opp=[SELECT Id,Name,Stagename,Amount FROM Opportunity WHERE Stagename='Prospecting'  AND Amount>50000]; 
+
+8. How can you lock records in apex code using SOQL?
+Ans:
+    List<Account> accounts=[SELECT Id,Name FROM Account LIMIT 2 FOR UPDATE];
+* The above query can lock the records.
+Note: FOR UPDATE will be used only in Apex classes and Triggers.
+   
+Like clause in soql?
+Ans: Like cluase is used to compare the string values or used to search for the string value in the given fields.
+           '%'  it is used for any number of characters
+           '_'    it is used for only one character
+
+9. Write a query to fetch all the accounts whose name starts with United?
+Ans:
+      SELECT Id,Name,Phone FROM Account WHERE Name Like 'United%'
+
+10. Write a query to fetch Accounts with corresponding contacts whose phone number is 12345?
+Ans:
+   List<Account> accList=[SELECT Id,Name,(SELECT Id,LastName,Phone  FROM Contacts WHERE Phone=12345) FROM Account];
+
+11. Write a SOQL Quey to fetch the Leads whose Record type as Partner
+Ans:
+List<Lead> leads= [SELECT  Id, Name,RecordType FROM Lead WHERE RecordType.Name='Partner'];
+
+12. How to use multi select picklist field in SOQL?
+Ans:
+  SELECT Id, Name FROM Account WHERE msFieldName  includes('AA', 'BBB', 'CCCC')
+
+Example:
+
+------------VF------------------------
+<apex:page controller="Soql">
+    <apex:form>
+    <apex:pageBlock id="pb">
+        <apex:pageBlockButtons location="Top">
+            <apex:commandButton value="setlimit" action="{!setlimit}" reRender="pb"/>
+             <apex:commandButton value="setmylimit" action="{!setmylimit}" reRender="pb"/>
+            <apex:commandButton value="setoffset" action="{!setoffset}" reRender="pb"/>
+            <apex:commandButton value="setmyoffset" action="{!setmyoffset}" reRender="pb"/>
+            <apex:commandButton value="getALLRows" action="{!getALLRows}" reRender="pb"/>
+            <apex:commandButton value="limitoffset" action="{!limitoffset}" reRender="pb"/>
+            <apex:commandButton value="mylimitoffset" action="{!mylimitoffset}" reRender="pb"/>
+            <apex:commandButton value="orderByASC" action="{!orderByASC}" reRender="pb"/>
+            <apex:commandButton value="orderByDESC" action="{!orderByDESC}" reRender="pb"/>
+            <apex:commandButton value="orderByASCDSC" action="{!orderByASCDSC}" reRender="pb"/>
+            <apex:commandButton value="lastCreated" action="{!lastCreated}" reRender="pb"/>
+             <apex:commandButton value="recentModified" action="{!recentModified}" reRender="pb"/>
+             <apex:commandButton value="recentViewed" action="{!recentViewed}" reRender="pb"/>
+        </apex:pageBlockButtons>
+         <apex:pageBlockTable value="{!accounts}" var="a">
+             <apex:column value="{!a.Name}"/>
+             <apex:column value="{!a.Industry}"/>
+             <apex:column value="{!a.LastViewedDate}"/>
+             <apex:column value="{!a.CreatedDate}"/>
+             <apex:column value="{!a.LastModifiedDate}"/>
+             <apex:column value="{!a.Phone}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>
+
+-------------------Apex------------------------
+Q.What is difference between SOSL and SOQL?
+
+SOQL (Salesforce Object Query Language)	                  SOSL (Salesforce Object Search Language)
+Only one object can be searched at a time	                  Many objects can be searched at a time
+Can query any type of field	                                                       Can query only on email, text or phone
+Can be used in classes and triggers	                                     Can be used in classes, but not triggers
+DML Operation can be performed on query results	DML Operation cannot be performed on search results
+Returns records	Returns fields
+
+
+public class Soql {
+    public List<Account> accounts{set;get;}
+public soql()
+{
+    accounts=[SELECT Id, Name, Industry, LastViewedDate, CreatedDate, LastModifiedDate,Phone FROM Account];
+}
+    //1.Limit
+public void setlimit()
+{
+    accounts=[SELECT Id, Name, Industry, LastViewedDate, CreatedDate, LastModifiedDate,Phone FROM Account limit 10];  
+}
+    //Dynamic Limit
+public void setmylimit()
+{
+    integer count=5;
+    accounts=[SELECT Id, Name, Industry, LastViewedDate, CreatedDate, LastModifiedDate,Phone FROM Account limit:count];  
+}
+    //offset
+    public void setoffset()
+{
+    accounts=[SELECT Id, Name, Industry, LastViewedDate, CreatedDate, LastModifiedDate,Phone FROM Account offset 5];  
+}
+    //dynamic offset
+    public void setmyoffset()
+{
+    integer start=8;
+    accounts=[SELECT Id, Name, Industry, LastViewedDate, CreatedDate, LastModifiedDate,Phone FROM Account offset:start];  
+}
+  //ALL RoWS means it return all records which are deleted and not deleted record
+public void getALLRows()
+{
+    accounts=[SELECT Id, Name, Industry, LastViewedDate, CreatedDate, LastModifiedDate,Phone FROM Account ALL ROWS];  
+}
+    //limitoffset
+    public void limitoffset()
+{
+    accounts=[SELECT Id, Name, Industry, LastViewedDate, CreatedDate, LastModifiedDate,Phone FROM Account LIMIT 100 OFFSET 10];  
+}
+    //dynamicoffsetlimit
+    public void mylimitoffset()
+{
+    integer start=3;
+    integer count=6;
+    accounts=[SELECT Id, Name, Industry, LastViewedDate, CreatedDate, LastModifiedDate,Phone FROM Account  limit:count offset:start];  
+}
+    //order by asc
+ public void orderByASC()
+{
+    integer start=3;
+    integer count=6;
+    accounts=[SELECT Id, Name, Industry, LastViewedDate, CreatedDate, LastModifiedDate,Phone FROM Account Order By Name ASC ];  
+}
+    //order by desc
+    public void orderByDESC()
+{
+    integer start=3;
+    integer count=6;
+    accounts=[SELECT Id, Name, Industry, LastViewedDate, CreatedDate, LastModifiedDate,Phone FROM Account Order By Name DESC];  
+}
+    //order by one field asc and one field desc
+    public void orderByASCDSC()
+{
+    integer start=3;
+    integer count=6;
+    accounts=[SELECT Id, Name, Industry, LastViewedDate, CreatedDate, LastModifiedDate,Phone FROM Account  Order By Name ASC,Phone DESC];  
+}
+    //fetch last created record
+  public void lastCreated()
+{
+    integer start=3;
+    integer count=6;
+    accounts=[SELECT Id, Name, Industry, LastViewedDate, CreatedDate, LastModifiedDate,Phone FROM Account  Order By CreatedDate DESC];  
+}
+    //fetch recently modified records
+    public void recentModified()
+{
+    integer start=3;
+    integer count=6;
+    accounts=[SELECT Id, Name, Industry, LastViewedDate, CreatedDate, LastModifiedDate,Phone FROM Account  Order By LastModifiedDate DESC];  
+}
+    //fetch recently viewed records
+    public void recentViewed()
+{
+    integer start=3;
+    integer count=6;
+    accounts=[SELECT Id, Name, Industry, LastViewedDate, CreatedDate, LastModifiedDate,Phone FROM Account  Order By LastViewedDate DESC];  
+}
+    
+    
+    
+}
+
+
+Example: Where 
+
+
+VF:
+
+<apex:page controller="SearchAccount">
+    <apex:form id="pb">
+     <apex:pageBlock >
+         <apex:pageBlockButtons location="top">
+             <apex:commandButton value="Search" action="{!search}" reRender="pb"/>
+             <apex:commandButton value="Dynamic" action="{!mysearch}" reRender="pb"/>
+         </apex:pageBlockButtons>
+         <apex:pageBlockSection columns="2">
+           <apex:inputText value="{!AccName}" label="Account Name"/>
+             <apex:inputText value="{!AccIndustry}" label="Industry"/>
+         </apex:pageBlockSection >
+         <apex:pageBlockSection columns="1">
+             <apex:pageBlockTable value="{!accounts}" var="a"  >
+                 <apex:column value="{!a.Name}"/>
+                 <apex:column value="{!a.Industry}"/>
+             </apex:pageBlockTable>
+         </apex:pageBlockSection>
+      </apex:pageBlock>
+    </apex:form>
+</apex:page>
+
+Apex:
+
+public class SearchAccount {
+    public List<Account> accounts{set;get;}
+    public String AccName{set;get;}
+    public String AccIndustry{set;get;}
+    public void search()
+    {
+        accounts=[Select Id,Name,Industry from Account where Name=:AccName and Industry=:AccIndustry ];
+    }
+    public void mysearch()
+    {
+        string query='Select Id,Name,Industry from Account';
+        if(string.isNotBlank(AccName)&&string.isNotBlank(AccIndustry))
+        {
+            query=query+' Where Name=\''+AccName+'\' And Industry=\''+AccIndustry+'\'';
+        }
+        else if(string.isNotBlank(AccIndustry))
+        {
+            query=query+'  Where Industry=\''+AccIndustry+'\'';
+        }
+        else if(string.isNotBlank(AccName))
+        {
+            query=query+'  Where Name=\''+AccName+'\'' ;
+        }
+         accounts=Database.query(query);
+    }
+}
+
+--------Like-----------------
+1.Write query to .fetch all account whose name start with united
+
+ where Name Like 'united%' 
+
+2..Write query to fetch all account whose name ends with gas
+
+Where name Like '%gas'
+
+4.Write query to fetchall account whose first name contains 'am'
+
+Where first name Like "%am%"
+
+5.Write query to fetchall contacts whose last name has k as second letter.
+
+Whare lastName Like  '_k%'
+
+6.Write query to fetch all contacts whose last name  conatains  s is second possition in last
+
+Where Name Like  '%s_'
+
+--------------------------Dates-------------------------------
+Reference Url:https://developer.salesforce.com/docs/atlas.en-us.234.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm
+
+Examples:
+
+1.Write Soql query to fetch all accounts created in lastMoth.
+
+List<Account> Accounts=[SELECT Id,Name,CreatedDate FROM Account Where CreatedDate=LAST_MONTH];
+system.debug('accounts'+Accounts);
+
+
+2.Write Soql query to fetch all Accounts created in last 10 days.
+
+List<Account> Accounts=[SELECT Id,Name,CreatedDate FROM Account Where CreatedDate=LAST_N_DAYS:10];
+system.debug('accounts'+Accounts);
+
+3.Write Soql query to fetch all Accounts created in lastweek.
+
+List<Account> Accounts=[SELECT Id,Name,CreatedDate FROM Account Where CreatedDate=LAST_WEEK];
+system.debug('accounts'+Accounts);
+
+4..Write Soql query to fetch all opportunities whose closed date in lastMoth.
+
+List<Opportunity> opps=[SELECT Id,Name,CloseDate FROM Opportunity Where CloseDate=LAST_MONTH];
+system.debug('Opps'+Opps);
+
+5.Write Soql query to fetch all Opporunities whose closed date in lastfiscal year
+
+VF:
+
+<apex:page controller="SelectOptions">
+    <apex:form id="pb">
+       <apex:pageBlock>
+           <apex:pageBlockSection>
+               <apex:selectList size="1" value="{!selected}">
+                   <apex:selectOptions value="{!options}"/>
+               </apex:selectList>
+           </apex:pageBlockSection>
+           <apex:commandButton value="Search" action="{!search}" reRender="pb"/>
+           <apex:pageBlockSection columns="1">
+               <apex:pageBlockTable value="{!accounts}" var="a" rendered="{! !ISNULL(accounts)}">
+                 <apex:column value="{!a.Name}"/>
+                 <apex:column value="{!a.createdDate}"/>
+               </apex:pageBlockTable>
+           </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
+
+Controller:
+
+public class SelectOptions {
+    public List<SelectOption> options{set;get;}
+    public List<Account> accounts{set;get;}
+    public string selected{set;get;}
+    public SelectOptions()
+    {
+        options=new List<SelectOption>();
+        //SelectOption s=new SelectOption(itemValue,itemLabel)
+        SelectOption s1=new SelectOption('none','--None--');
+        SelectOption s2=new SelectOption('LAST_WEEK','Last Week');
+        SelectOption s3=new SelectOption('THIS_WEEK','This Week');
+        SelectOption s4=new SelectOption('NEXT_WEEK','Next Week');
+        options.add(s1);
+         options.add(s2);
+         options.add(s3);
+         options.add(s4);
+    }
+    public void search()
+    {
+        if(selected !='none')
+        {
+            string query='Select Id,Name,createdDate from Account Where createdDate='+selected;
+            accounts=Database.query(query);
+        }
+    }
+}
+
+
+
+
+------------------import soql query-----------------------------
+1.Write Soql query to fetch all accounts whose accounts dont have contacts
+
+List<Account> accounts=[Select Id,Name from Account Where Id Not IN(Select AccountId from Contact) ];
+system.debug(accounts);
+
+2.Write Soql query to fetch all contacts whose  contacts dont have account
+
+List<Contact> contacts=[Select AccountId,Name from Contact Where AccountId=''];
+system.debug(contacts);
+
+3.Write Soql query to fetch all accounts whose accounts dont have contacts and cases
+
+List<Account> accounts=[Select Id from Account Where Id Not IN(Select AccountId from Contact ) and Id Not IN (Select AccountId from Case)];
+system.debug(accounts);
+
+4.Write Soql query to fetch all cases whose  cases dont have account and contact
+
+List<Case> cases=[Select Id,AccountId,ContactId from Case Where AccountId='' and ContactId='' ];
+system.debug(cases);
+
+-------------------Parent to child query--------------------------
+
+opportunityLineItems means Opportunity products
+
+syntax: select pfields ,(select cfields from chids) from parent    (standard)
+
+EXamples:
+
+1.write a query to fetch all accounts with corresponding contacts
+
+Select Id,Name,(Select Id,Name from Contacts) from Account
+
+2.write a query to fetch all accounts with corresponding  whose contacts phone 6281593775
+
+select Id,Name,(select Id,Phone,Name from Contacts  Where Phone='06281593775') from Account
+
+3.write a query to fetch all  Opportunity with corresponding opportunityLineItems
+
+Select Id,Name,(Select Id,Name,OpportunityId,TotalPrice,Quantity from OpportunityLineItems) from Opportunity
+
+4.write a query to fetch all Opportunity with corresponding quotes
+
+select Id,Name,(select Id,QuoteToName from Quotes) from Opportunity
+
+5.write a query to fetch all accounts with corresponding orders.
+
+Select Id, Name,(SELECT Id, Type, Status FROM Orders) from Account
+
+6.write a query to fetch all accounts with corresponding contracts.
+
+Select Id, Name,(SELECT Id, AccountId, ContractTerm FROM Contracts) from Account
+
+7.write a query to fetch all accounts with corresponding assets.
+
+Select Id, Name,(SELECT Id, AccountId, Name FROM Assets) from Account
+
+----P2C(Custom object)--------
+1.write a query to fetch all accounts with corresponding payments.
+
+Select Id,Name,(Select Id,Name from Payments__r) from Account
+
+2.write a query to fetch all Beers with corresponding loans.
+
+Select Id,Name,(Select Id, Name from Loans__r) from Beer__c
+
+
+3.Write soql query to fetch all account with corresponding contacts
+
+fetch the all contacts and put in new list
+
+
+List<Account> accounts=[Select Id,Name,(Select Id,Name from Contacts) from Account];
+List<Contact> con=new List<Contact>();
+for(Account a:accounts)
+{
+  for(Contact c:a.Contacts)
+  {
+      con.add(c);
+  }
+}
+
+or
+List<Account> accounts=[Select Id,Name,(Select Id,Name from Contacts) from Account];
+List<Contact> con=new List<Contact>();
+for(Account a:accounts)
+{
+  if(a.Contacts.size()>0)
+  {
+      con.addAll(a.Contacts);
+  }
+}
+
+4.Write soql query to fetch all account with corresponding Opportunities
+
+fetch the Opportunity ammount and put then in new list
+
+List<Account> accounts=[Select Id,Name,(Select Id,Amount from Opportunities) from Account];
+List<Decimal> amounts=new List<Decimal>();
+for(Account a:accounts)
+{
+  for(Opportunity p:a.Opportunities)
+  {
+      amounts.add(p.Amount);
+  }
+}
+
+5.Write Soql query to fetch all accounts with corresponding all Contacts
+
+fetch all contacts whose leadsource is web and put them in new List
+
+
+List<Account> acc=[Select Id,Name,(Select Id,LastName,LeadSource from Contacts) from Account];
+List<Contact> cons=new List<Contact>();
+for(Account a:acc)
+{
+    for(Contact c:a.Contacts)
+    {
+        if(c.LeadSource=='Web')
+        {
+            cons.add(c);
+        }
+    }
+}
+system.debug(cons);
+
+6.Write Soql query to fetch all accounts with corresponding all Opportunities
+
+if Opportunity closed date is today then put their amount in seperate list
+
+List<Account> acc=[Select Id,Name,(Select Id,Name,Amount,CloseDate from Opportunities) from Account];
+List<Decimal> amounts=new List<Decimal>();
+for(Account a:acc)
+{
+    for(Opportunity p:a.Opportunities)
+    {
+        if(p.CloseDate==system.today())
+        {
+           amounts.add(p.Amount); 
+        }
+    }
+}
+system.debug(amounts);
+
+7.Write Soql query to fetch all accounts with corresponding all Opportunities and all contacts and all cases
+
+Display all objects fields in single list page
+
+VF:
+
+<apex:page  controller="soqlExample1">
+    <apex:form>
+        <apex:pageBlock title="Accounts">
+                <apex:pageBlockTable value="{!acc}" var="a">
+                    <apex:column value="{!a.Name}"/>
+                    <apex:column headerValue="Contacts">
+                        <apex:dataTable value="{!a.Contacts}" var="b">
+                            <apex:column value="{!b.Id}" />
+                            <apex:column value="{!b.Name}" />
+                        </apex:dataTable>
+                    </apex:column>
+                    <apex:column headerValue="Opportunities">
+                        <apex:dataTable value="{!a.Opportunities}" var="c" >
+                            <apex:column value="{!c.StageName}"/>
+                        </apex:dataTable>
+                    </apex:column>
+                    <apex:column headerValue="Cases">
+                        <apex:dataTable value="{!a.Cases}" var="d">
+                            <apex:column value="{!d.Status}"/>
+                        </apex:dataTable>
+                    </apex:column>
+                </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
+
+Controller:
+
+public class soqlExample1 {
+public List<Account> acc{set;get;}
+public soqlExample1()
+{
+    acc=[Select Id,Name,(Select Id,Name from Contacts),(Select StageName from Opportunities),(Select Status,Subject from Cases) from Account];
+    
+    
+}
+}
+
+------------------------------Child to Parent query(standard)-----------------------------------------------
+
+Syntax:Select cfield1,cfield2,Rfield.pfield1,Rfield.pfield2 from child
+
+Examples:
+
+1.Select Id, Name, Account.Id, Account.Name from Contact
+2.Select Id,Name,Opportunity.Id,Opportunity.Name from OpportunityLineItem
+3.Select Id,Status,Account.Id,Account.Name from Case
+4.select Id,Status,Account.Id,Account.Name from Contract
+
+------------------------------Child to Parent query(Custom)---------------------------
+
+syntax:Select cfield1.cfield2,rflied__r.pfield1,rfield__r.pfield2 from child
+
+Example:
+
+1.Select Id,Name,Beer__r.Id,Beer__r.Name from Loan__c
+2.Select Id,Name,Payment__r.Id from Loan__c
+
+
+-----------------------------Aggregate Functions-------------------------------------
+
+1.AggregateResult is standard object
+2.which field you query in aggregateResult that field must be grouped or aggregated other wise it throw error
+
+Examples:
+
+1.Write Soql Query to fell sum,min,max,averg of opportunity amount 
+
+
+AggregateResult result=[Select Sum(Amount)total,Min(Amount)minVal,Max(Amount)maxVal,
+                        Avg(Amount)avgVal from Opportunity];
+//aggregateResult return the result in the form of aggregateResult.So if we want convert that result in form
+//of string or decimal etc based on requirement
+Decimal total=(Decimal) result.get('total');
+Decimal min=(Decimal) result.get('minVal');
+Decimal max=(Decimal) result.get('maxVal');
+Decimal avg=(Decimal) result.get('avgVal');
+System.debug('Total==>'+total);
+System.debug('min==>'+min);
+System.debug('max==>'+max);
+System.debug('avg==>'+avg);
+
+2.Write soql query to fetch sum,min,max,avg of opportunity amount based on stageName
+
+
+List<AggregateResult> results=[Select StageName,Sum(Amount)total,Min(Amount)minVal,
+                              Max(Amount)maxVal,Avg(Amount)avgVal from Opportunity 
+                              group by StageName];
+for(AggregateResult result:results)
+{
+    String stage=(String) result.get('StageName');
+    Decimal total=(Decimal) result.get('total');
+    Decimal Min=(Decimal) result.get('minVal');
+    Decimal Max=(Decimal) result.get('maxVal');
+    Decimal avg=(Decimal) result.get('avgVal');
+    System.debug('====Stage Name====>'+stage);
+    system.debug('total====>'+total);
+     system.debug('Min====>'+Min);
+     system.debug('Max====>'+Max);
+     system.debug('avg====>'+avg);
+
+
+3.write soql query to fetch sum of opportunity amount whose stageName is closedWon
+
+AggregateResult result=[Select sum(Amount)sumVal from Opportunity Where StageName='Closed Won'];
+system.debug('Sum===>'+(Decimal) result.get('sumVal'));
+
+
+
+-------------Soql Injection and lock record using soql------------------------
+
+*number of  Soql query is 100
+*number of rows in query 5000
+*if you use one query in method that query returns 50000 records
+*if you use multiple soql query inside the method that all querys returns 50000 records only
+
+
+------------------------DML----------------------------------------------------
+
+Controller:
+
+public class CreateAccountDML {
+    public String accName{set;get;}
+    public String accIndustry{set;get;}
+    public String accPhone{set;get;}
+    public String accRating{set;get;}
+public PageReference create()
+{
+    integer count=[Select count() from Account Where Name=:accName];
+    PageReference p;
+    if(count>0)
+    {
+        ApexPages.Message msg=new ApexPages.Message(ApexPages.Severity.ERROR,'Dupicate Record Found');
+        ApexPages.addMessage(msg);
+    }
+    else{
+        Account acc=new Account();
+        acc.Name=accName;
+        acc.Phone=accPhone;
+        acc.Industry=accIndustry;
+        acc.Rating=accRating;
+        insert acc;
+        p=new PageReference('/'+acc.Id);
+    }
+    return p;
+}
+    public void cancel()
+    {
+        accName=null;
+        accPhone=null;
+        accIndustry=null;
+        accRating=null;
+    }
+}
+
+
+VF:
+
+<apex:page controller="CreateAccountDML" >
+    <apex:pageMessages></apex:pageMessages>
+    <apex:form id="pb">
+        <apex:pageBlock title="Account">
+            <apex:pageBlockButtons>
+                <apex:commandButton value="Submit" action="{!create}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}" reRender="pb"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection>
+                <apex:pageBlockSectionItem>
+                    <apex:outputLabel value="Name"/>
+                    <apex:inputText value="{!accName}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem>
+                    <apex:outputLabel value="Phone"/>
+                    <apex:inputText value="{!accPhone}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem>
+                    <apex:outputLabel value="Rating"/>
+                    <apex:inputText value="{!accRating}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem>
+                    <apex:outputLabel value="Industry"/>
+                    <apex:inputText value="{!accIndustry}"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
+
+2.Create account,contact,opportunity in single page
+
+VF:
+
+<apex:page  controller="CreateAccConOpp">
+    <apex:form id="pb">
+        <apex:pageBlock>
+            <apex:pageBlockButtons location="Top">
+                <apex:commandButton value="Create" action="{!create}"/>
+                   <apex:commandButton value="Cancel" action="{!cancel}" reRender="pb"/>
+            </apex:pageBlockButtons>
+           <apex:pageBlockSection title="Account" collapsible="false">
+               <apex:inputText value="{!acc.Name}"/>
+            </apex:pageBlockSection> 
+            <apex:pageBlockSection title="Contact" collapsible="false">
+               <apex:inputText value="{!con.LastName}"/>
+                <apex:inputText value="{!con.FirstName}"/>
+            </apex:pageBlockSection> 
+            <apex:pageBlockSection title="Opportunity" collapsible="false">
+               <apex:inputText value="{!opps.Name}"/>
+                <apex:inputField  value="{!opps.StageName}"/>
+                <apex:inputText value="{!opps.Amount}"/>
+                <apex:inputField value="{!opps.CloseDate}"/>
+            </apex:pageBlockSection> 
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
+
+Controller:
+
+public class CreateAccConOpp {
+    public Account acc{set;get;}
+    public Contact con{set;get;}
+    public Opportunity opps{set;get;}
+    public CreateAccConOpp()
+    {
+        acc=new Account();
+        con=new Contact();
+        opps=new Opportunity();
+    }
+    public PageReference create()
+    {
+        insert acc;
+        con.AccountId=acc.Id;
+        insert con;
+        opps.AccountId=acc.Id;
+        insert opps;
+        PageReference p=new PageReference('/'+acc.Id);
+         return p;
+    }
+   public void cancel()
+   {
+       acc=new Account();
+       con=new Contact();
+       opps=new Opportunity();
+   }
+    
+}
+
+
+3.Create one account and mutiple contacts using that accountId in single page?
+
+VF:
+
+<apex:page controller="multipleCon">
+    <apex:form>
+       <apex:pageBlock>
+           <apex:pageBlockButtons location="Top">
+               <apex:commandButton value="Save" action="{!create}"/>
+           </apex:pageBlockButtons>
+           <apex:pageBlockSection title="Account" columns="2">
+               <apex:inputText value="{!acc.Name}"/>
+               <apex:inputField value="{!acc.Rating}"/>
+           </apex:pageBlockSection>
+           <apex:pageBlockSection title="Contacts" columns="1" >
+         <apex:pageBlockTable value="{!cons}" var="con"  id="pb">
+               <apex:column  headerValue="LastName">
+                   <apex:inputText value="{!con.LastName}"/>
+               </apex:column>
+               <apex:column  headerValue="FirstName">
+                   <apex:inputText value="{!con.FirstName}"/>
+               </apex:column>
+               <apex:column headerValue="Action" >
+                   <apex:commandButton value="Add" action="{!add}" reRender="pb"/>
+               </apex:column>
+           </apex:pageBlockTable>
+           </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
+
+Controller:
+
+public class multipleCon {
+    public Account acc{set;get;}
+    public List<Contact> cons{set;get;}
+    public multipleCon()
+    {
+        acc=new Account();
+        cons=new List<Contact>();
+        add();
+    }
+    public void add()
+    {
+        Contact c=new Contact();
+        cons.add(c);
+    }
+    public PageReference create()
+    {
+        insert acc;
+        for(Contact con:cons)
+        {
+            con.AccountId=acc.Id;
+        }
+        insert cons;
+        return new PageReference('/'+acc.Id);
+    }
+
+}
+
+
+4.Create Account and assign wissen as ownerId
+
+User u=[Select Id,Name from User Where Name='Wissen'];
+Account a=new Account();
+a.Name='DML Example';
+a.OwnerId=u.Id;
+insert a;
+system.debug(a);
+
+5.Create Lead and assign DML queue as ownerId
+
+Group g=[Select Id,Name from Group Where Type='Queue' and Name='DML '];
+Lead l=new Lead();
+l.Status='Closed - Converted';
+l.Company='TCS';
+l.LastName='DML EXample Test';
+l.OwnerId=g.Id;
+insert l;
+system.debug(l);
+
+6.Create product                                                            ==============>PriceBookEntry is a junction object of product(LookUp) and priceBook(LookUp)
+
+
+Product2 p=new Product2(Name='DML Product',ProductCode='12517',IsActive=true);
+insert p;
+system.debug(p);
+
+
+7.Create PriceBook
+
+Pricebook2 pb=new Pricebook2(Name='PB DML');
+insert pb;
+system.debug(pb);
+`
+8.Create PriceBookEntry
+
+Product2 p=[Select Id,Name from Product2 Where Name='DML Product'];
+Pricebook2 pb=[Select Id,Name from PriceBook2 Where Name='DML PB'];
+PriceBookEntry pbe=new PriceBookEntry(Product2Id=p.Id,PriceBook2Id=pb.Id,UnitPrice=1000);
+insert pbe;
+system.debug(pbe);
+
+
+------------------------------------------------Update------------------------------------
+
+1.Fetch all contacts whose contact leadsoucre is web then update that lead company as website
+
+
+List<Lead> leads=[Select Id,Name,Company,LeadSource from Lead Where LeadSource='Web'];
+for(Lead l:leads)
+{
+    l.Company='Website';
+}
+update leads;
+system.debug(leads);
+
+2.Write Soql qury to fell all opportunity and whose opportunity is closed this month update that opportunity  status closed won
+
+List<Opportunity> opps=[Select StageName,Name,CloseDate from Opportunity 
+                        Where CloseDate=THIS_MONTH];
+
+for(Opportunity p:opps)
+{
+    p.StageName='Closed Won';
+}
+update opps;
+system.debug(opps);
+
+
+3.Write Soql qury to fetch all  accounts and whose accounts is created  yesterday  update that account industry is education and rating is hot
+
+List<Account> acc=[Select Id,Industry,Rating from Account where CreatedDate=YESTERDAY];
+for(Account a:acc)
+{
+  a.Rating='Hot';
+    a.Industry='Education';
+}
+update acc;
+system.debug(acc);
+
+------------------------------Delete ----------------------------------
+1.Write Soql qury to fell all opportunity and whose opportunity is closeDate is less than today  those  opportunity  delete
+
+
+List<Opportunity> opps=[Select Name,StageName,CloseDate from Opportunity Where CloseDate<TODAY];
+delete opps;
+system.debug(opps);
+
+3.Write Soql qury to fetch all  contacts and whose contacts not related to account  delete that contacts;
+
+List<Contact> contacts=[Select Id,Name,AccountId from Contact Where AccountId Not IN(Select Id from Account)];
+delete contacts;
+system.debug(contacts);
+
+---------------------------------------------undelete-----------------------------------------
+
+1.undelete the all accounts which are in recycle bin
+
+List<Account> accounts=[Select IsDeleted from Account  Where IsDeleted=true ALL ROWS];
+undelete accounts;
+system.debug(accounts);
+
+2.undelete the all contacts which are in recycle bin
+
+List<Contact> contacts=[Select Name,IsDeleted from Contact Where IsDeleted=true ALL ROWS];
+undelete contacts;
+system.debug(contacts);
+
+3.undelete all opportunitys which are in recycle bin
+
+List<Opportunity> opps=[Select Name,IsDeleted from Opportunity Where isDeleted=true ALL ROWS];
+undelete opps;
+system.debug(opps);
+
+-----------------------------------------upsert----------------------------------------
+1.using externalId we can perform upsert operation
+2.if externaId already is existing that record is update using externalId otherWise record Created
+
+
+List<Order__c> orders=new List<Order__c>();
+//Create Record
+Order__c o=new Order__c();
+o.subTotal__c=80000;
+o.Status__c='Activated';
+o.myId_c__c=3;
+orders.add(o);
+//Update record using externalId
+Order__c o1=new Order__c();
+o1.subTotal__c=600000;
+o1.Status__c='Draft';
+o1.myId_c__c=1;
+orders.add(o1);
+upsert orders myId_c__c;                            
+system.debug(orders);
+
+
+------------------------------Merge----------------------------
+Example: I have two account records on wipro if you merge that account right side account deleted and assign that record childs to left side account records.
+
+List<Account> accounts=[Select Id,Name from Account Where Name='Wipro'];
+for(integer i=1;i<accounts.size();i++)
+{
+    merge accounts[0] accounts[1];
+}
+
+----------------------------------------DataBase DML--------------------------------------------------------------
+
+1.authomic means when we perform the dml operation on records.In anyone record is failed hole transation failed.Insert,update,upsert,delete,undelete,merge this all are automic
+2.non authomic means when we perform the dml operation on records.In anyone record is failed  hole transation not failed that means failed record not executed but remaining records executed .
+=>Database.Insert,
+=>Database.update,
+=>Database.upsert,
+=>Database.delete
+=>Database.,undelete,
+=>Database.merge  this all are perform the automic and non automic operation based on flag
+Database.insert(List<sobjet> ,false)  it is non automic 
+Database.insert(List<sobjet> ,true)  it is automic 
+
+Database.Error
+
+1.getFields()
+2.getMessage()
+
+Database.SaveResult()
+
+1.getErrors()
+2.isSuccess()
+3.getId()
+
+------------------------Database.insert---------------------------------
+
+Example:
+
+List<Account> accounts=new List<Account>();
+Account a=new Account();
+a.Name='DML Database';
+a.Phone='1178281';
+a.Industry='Banking';
+accounts.add(a);
+Account a1=new Account();
+a1.Phone='87989';
+a1.Industry='Education';
+accounts.add(a1);
+List<Database.SaveResult> result=Database.insert(accounts,false);
+for(Database.SaveResult sr:result)
+{
+    if(sr.isSuccess())
+    {
+        system.debug('Account Record is Created Successfully');
+        system.debug('Account Record Id: '+sr.getId());
+    }
+    else{
+        for(Database.Error e:sr.getErrors())
+        {
+            system.debug('Fields==>'+e.getFields());
+            system.debug('Error Message'+e.getMessage());
+        }
+    }
+}
+
+Dataloader is non atomic
+
+
+1.insert and update is saved in database.saveResult
+2Delete is saved in database.deleteResult
+3.undelete is saved in database.undeleteResult
+4.Upsert is saved in database.upsertResult
+
+try catch means if any one record failed that record only not execute remain record executed successfull
+
+Example:
+Account and contact inserted in account i give all required values but in contact i didint give all record fields in that senario account executed and contact not executed .
+
+public class className()
+{
+public void methods()
+{
+try{
+       Account acc=new Account();
+        acc.Name=s.Company;
+        acc.Industry=s.indystry;
+        acc.Phone=s.Phone;
+        insert acc;
+        Contact con=new Contact();
+        con.FirstName=s.FirstName;
+         con.Phone=s.Phone;
+        insert con;
+}
+catch(exception e)
+{
+system.debug(e.getMessage());
+}
+}
+}
+
+
+SavePoint and rollback:
+
+
+VF:
+
+<apex:page Controller="Savecontroller">
+   <apex:pageMessages></apex:pageMessages>
+    <apex:form id="Pb">
+           <apex:pageBlock >
+               <apex:pageBlockButtons location="Top">
+                   <apex:commandButton Value="Save" action="{!create}" reRender="pb"/>
+               </apex:pageBlockButtons>
+              <apex:pageBlockSection title="Account" columns="1">
+                  <apex:pageBlockSectionItem>
+                      <apex:outputLabel Value="Company"/>
+                          <apex:inputText value="{!s.Company}"/>
+                  </apex:pageBlockSectionItem>
+          
+                  <apex:pageBlockSectionItem>
+                      <apex:outputLabel Value="LastName"/>
+                          <apex:inputText value="{!s.LastName}"/>
+                  </apex:pageBlockSectionItem>
+                  <apex:pageBlockSectionItem>
+                      <apex:outputLabel Value="FirstName"/>
+                          <apex:inputText value="{!s.FirstName}"/>
+                  </apex:pageBlockSectionItem>
+                   <apex:pageBlockSectionItem>
+                      <apex:outputLabel Value="Phone"/>
+                          <apex:inputText value="{!s.Phone}"/>
+                  </apex:pageBlockSectionItem>
+                  <apex:pageBlockSectionItem>
+                      <apex:outputLabel Value="Indystry"/>
+                          <apex:inputText value="{!s.indystry}"/>
+                  </apex:pageBlockSectionItem>
+                  <apex:pageBlockSectionItem>
+                      <apex:outputLabel Value="Email"/>
+                          <apex:inputText value="{!s.email}"/>
+                  </apex:pageBlockSectionItem>
+               </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
+
+Apex:
+
+public class Savecontroller {
+    public SavePointExample s{set;get;}
+    public Account acc{set;get;}
+    public Contact con{set;get;}
+    public Opportunity opps{set;get;}
+    
+    public Savecontroller()
+    {
+      s=new SavePointExample();
+    }
+    public PageReference create()
+    {
+        PageReference P;
+         SavePoint sp=Database.setSavepoint();
+        try{
+       Account acc=new Account();
+        acc.Name=s.Company;
+        insert acc;
+        Contact con=new Contact();
+        con.LastName=s.LastName;
+        con.FirstName=s.FirstName;
+        con.AccountId=acc.Id;
+        insert con;
+        Opportunity opps=new Opportunity();
+        opps.Name=s.Company+'_';
+        opps.StageName='Closed Won';
+        opps.CloseDate=system.today();
+              opps.AccountId=acc.Id;
+        insert opps;
+            p=new PageReference('/'+acc.Id);
+        }
+        catch(Exception e)
+        {
+           Database.rollback(sp);
+             ApexPages.Message msg=new ApexPages.Message(ApexPages.Severity.ERROR,e.getMessage());
+            ApexPages.addMessage(msg);
+        }
+        return p;
+    }
+}
+
+Wrapper:
+
+public class SavePointExample {
+    public String Company{set;get;}
+    public string LastName{set;get;}
+    public string FirstName{set;get;}
+    public string Phone{set;get;}
+    public string indystry{set;get;}
+    public string  email{set;get;}
+}
+
+
+--------------------------------------------Outbound Email --------------------------------------------------
+outbound email means send email from saleforce to ouside
+
+Example 1:
+
+public class OutboundMessage {
+public static void senMsg()
+{
+    String[] toAdd=new String[]{'sukanyam425@gmail.com'};
+       Messaging.SingleEmailMessage msg=new Messaging.SingleEmailMessage(); 
+    //we can send only 10 single email message in single transation 
+    msg.setToAddresses(toAdd);
+    msg.setSubject('Test Email Outbound');
+    msg.setPlainTextBody('This is plain text body');
+    Messaging.SingleEmailMessage mail=new Messaging.SingleEmailMessage();
+    mail.setToAddresses(toAdd);
+    mail.setSubject('PD2 Cerification Preparation Updates');
+    String body='<h3>Hi Sir,<br/>';
+          body=body+'I have done 35% percent of pd2 prepation.In trailhead the following modules done<br/>';
+         body=body+'<i>1.Automation and Security</i><br/>';
+          body=body+'<i>2.LWC</i><br/>';
+             body=body+'Thanks<br/>M.Sukanya</h3>';
+                 mail.setHtmlBody(body);
+                 mail.setSenderDisplayName('Rani Maddipatla');
+                 mail.setInReplyTo('maddipatlasukanya@gmail.com');
+                Messaging.Email[] emails=new Messaging.Email[]{mail,msg};
+                Messaging.sendEmail(emails);
+        
+}
+}
+
+
+Example2:Send email to whose lead is created day
+
+public class OutboundMsg1 {
+public void invoke()
+{
+    List<Messaging.Email> mails=new List<Messaging.Email>();
+    List<Lead> leads=[Select Id,Name,LastName,FirstName,Phone,Email from Lead Where CreatedDate=TODAY];
+    for(Lead l:leads)
+    {
+         string[]  emails=new string[]{l.Email};
+          string body='Dear Customer,<br/><br/>';
+                 body=body+'Your Service request is recieved the following details<br/>';
+                 body=body+'<b>Name:</b><i>'+l.Name+'</i><br/>';
+                 body=body+'<b>LastName:</b><i>'+l.LastName+'</i><br/>';
+                 body=body+'<b>FirstName:</b><i>'+l.FirstName+'</i><br/>';
+                 body=body+'<b>Phone:</b><i>'+l.Phone+'</i><br/>';
+                 body=body+'<b>Email:</b><i>'+l.Email+'</i><br/>';
+                 body=body+'Thanks<br/>Suknaya';
+        Messaging.SingleEmailMessage msg=new Messaging.SingleEmailMessage();
+                    msg.setToAddresses(emails);
+                    msg.setSubject('Lead Service Request');
+                    msg.setHtmlBody(body);
+                    msg.setSenderDisplayName('Service Team');
+                    msg.setInReplyTo('sukanyam425@gmail.com');
+        
+           mails.add(msg);    
+    }
+    Messaging.sendEmail(mails);
+}
+}
+
+
+
+
+Example3:Send email template using singleEmailMessage
+
+1.EmailTemplate we can send only contact,lead,user
+2.using singleEmailMessage we can send only one record data
+3.we can add 150 to address in singleEmailMessage 
+
+public class OutboundMsg2 {
+public  void invoke()
+{
+    EmailTemplate et=[Select Id,Name from EmailTemplate where Name='Account Notifications'];
+    Contact con=[Select Id,Name,Phone,AccountId from Contact where Phone='923127'];
+    Messaging.SingleEmailMessage msg=new Messaging.SingleEmailMessage();
+     msg.setTemplateId(et.Id);
+    msg.setTargetObjectId(con.Id);
+    msg.setWhatId(con.AccountId);
+    Messaging.Email[] mails=new Messaging.Email[]{msg};
+    Messaging.sendEmail(mails);
+    
+}
+}
+
+Example4:
+Write programe to send email to lead whose phone is 12345 with lead_Ack body.
+
+public class OutboundMsg2 {
+public  void invoke()
+{
+   EmailTemplate et=[Select Id,Name from EmailTemplate Where Name='Lead_Ack'];
+  Lead l=[Select Id,Name,Phone,Email from Lead Where Phone='12345' limit 1];
+    Messaging.SingleEmailMessage msg=new Messaging.SingleEmailMessage();
+    msg.setTemplateId(et.Id);
+    msg.setTargetObjectId(l.Id);
+    Messaging.Email[] mails=new Messaging.Email[]{msg};
+        messaging.sendEmail(mails);
+}
+}
+
+Example4:Send Email to all leads  whose phone 12345 with attached Document
+
+public class outboundMsg3 {
+public static void invoke()
+{
+    EmailTemplate et=[Select Id from EmailTemplate Where Name='Lead_ACK' ];
+    Lead l=[Select Id,Name,Phone,Email from Lead where Phone='12345' and Email='maddipatlasukanya@gmail.com'];
+    //fetch the document and convert to emailfileAttachment
+    Document d=[Select Name,ContentType,Body from Document where Name='PD2'];
+    Messaging.EmailFileAttachment attDoc=new Messaging.EmailFileAttachment();
+    attDoc.setFileName(d.Name);
+    attDoc.setBody(d.Body);
+    attDoc.setContentType(d.ContentType);
+    PageReference p=Page.Test;
+    blob body=p.getContentAsPDF();
+   //convert vf page to pdf
+    Messaging.EmailFileAttachment vfAtt=new Messaging.EmailFileAttachment();
+    vfAtt.setFileName('invoice.pdf');
+    vfAtt.setBody(body);
+    Messaging.EmailFileAttachment[] files=new Messaging.EmailFileAttachment[]{attDoc,vfAtt};
+    Messaging.SingleEmailMessage msg=new Messaging.SingleEmailMessage();
+    msg.setTemplateId(et.Id);
+    msg.setTargetObjectId(l.Id);
+    msg.setFileAttachments(files);
+    Messaging.Email[] emails=new Messaging.Email[]{msg};
+        Messaging.sendEmail(emails);
+}
+}
+
+
+MassEmailMessage:
+-----------------------------------------
+
+We can pass 200 records Ids
+
+public static void invoke1()
+    {
+        EmailTemplate et=[Select Id from EmailTemplate where Name='Lead_Ack'];
+       Map<id,Lead> mapLeads=new Map<id,Lead>([select Id,Phone from Lead where Phone='12345']);
+        List<id> ids=new List<id>(mapLeads.keySet());
+        Messaging.MassEmailMessage massmsg=new Messaging.MassEmailMessage();
+        massmsg.setTemplateId(et.Id);
+        massmsg.setTargetObjectIds(ids);
+        Messaging.Email[] emails=new Messaging.Email[]{massmsg};
+            messaging.sendEmail(emails);
+    }
+
+------------------------------------------------Triggers--------------------------------------------------- 
+-----------------Before insert---------------------------------
+1.Write insert trigger on lead and assign leadSource =Email and Rating=Hot
+
+trigger LeadSourceUpdate on Lead (before insert) {
+for(Lead l:trigger.new)
+{
+    l.LeadSource='Email';
+    l.Rating='Hot';
+}
+}
+
+2.Write insert trigger on lead and if industry is banking assign leadSource =Web and Rating=Hot and leadsource other than banking assign leadSource =Email and Rating=Warm
+
+trigger LeadSourceUpdate on Lead (before insert) {
+    List<Lead> leads=trigger.new;
+    for(Lead l:leads)
+    {
+        if(l.Industry=='Banking')
+        {
+            l.Rating='Hot';
+            l.LeadSource='Web';
+        }
+        else
+        {
+            l.Rating='Warm';
+            l.LeadSource='Email';
+        }
+    }
+}
+
+3.When ever leadsource is web and email is not block throw error
+
+trigger LeadSourceUpdate on Lead (before insert) {
+    List<Lead> leads=trigger.new;
+    for(Lead l:leads)
+    {
+        if(l.LeadSource=='Web'&&string.isBlank(l.Email))
+        {
+            l.addError('Lead source can not take web and email not blank');
+        }
+        
+    }
+}
+}
+
+4.Whenever contact insert that contact related account more than 2 contacts throw error
+
+Method1:
+
+trigger TrowErroronContact on Contact (before insert) {
+List<Contact> contacts=trigger.new;
+    Set<Id> acIds=new set<Id>();
+    for(Contact c:contacts)
+    {
+      if(string.isNotBlank(c.AccountId))  
+      {
+          acIds.add(c.AccountId);
+      }
+    }
+    if(acIds.size()>0)
+    {
+       List<Account> acc=[Select Id,Name,(Select Id,AccountId from Contacts) from Account Where Id IN:acIds];
+      for(Account a:acc)
+      {
+              for(Contact c:trigger.new)
+              {
+                  if(a.Contacts.size()>=2)
+                  c.addError('Contacts not more than 2');
+              }
+   
+      }
+    }
+}
+
+
+Method2:
+
+public class ContactSizeController {
+public static void contactCreate(List<Contact> con)
+{
+    set<Id> accIds=new set<Id>();
+    for(Contact c:con)
+    {
+        if(string.isNotBlank(c.AccountId))
+            accIds.add(c.AccountId);
+    }
+    if(accIds.size()>0)
+    {
+        Map<Id,Integer> accMap=new Map<Id,Integer>();
+        List<Account> acc=[Select Id,(Select Id from Contacts) from Account Where Id in:accIds];
+        for(Account a:acc)
+        {
+        List<Contact> cons=a.Contacts;
+        accMap.put(a.Id,cons.size());
+        }
+        for(Contact c:con)
+        {
+            Id ParentId=c.AccountId;
+            if(ParentId !=null)
+            {
+                integer count=accMap.get(ParentId);
+                if(count>=2)
+                {
+                    c.addError('Can not create contact more than 2');
+                }
+            }
+        }
+    }
+}
+}
+
+Example5:Whenever  Opportunity insert that Opportunity  related account more than 1 Opportunity throw error
+
+public class OppErrorController {
+public static void CreateOpp(List<Opportunity> opps)
+{
+    set<Id> accIds=new set<Id>();
+    for(Opportunity p:opps)
+    {
+        if(p.AccountId !=null)
+        {
+            accIds.add(p.AccountId);
+        }
+    }
+    if(accIds.size()>0)
+    {
+       Map<Id,Integer> accMap=new Map<Id,Integer>();
+        List<Account> acc=[select Id,(Select Id from Opportunities) from Account Where Id IN:accIds];
+        for(Account a:acc)
+        {
+            List<Opportunity > opp=a.Opportunities;
+            accMap.put(a.Id,opp.size());
+        }
+        for(Opportunity  p:opps)
+        {
+            if(p.AccountId !=null)
+            {
+                integer count=accMap.get(p.AccountId);
+                if(count>=1)
+                {
+                    p.addError('Can not Create more than 1 Opportunity ');
+                }
+            }
+        }
+    }
+    
+}
+
+Trigger:
+
+trigger OpportunityUpdate on Opportunity (before insert) {
+
+    OppErrorController.CreateOpp(trigger.new);
+   
+}
+---------------------Apex Sharing-------------------------------
+Account                          AccountShare
+Contact                            ContactShare
+Customer__c                Customer__Share
+
+standard
+
+Object Name            Which Record                     With Whom                        why you                 how you want
+-----------------------------------------------------------------------------------------------------------------------------
+Account                 AccountId                                  User/GroupId                   RowCause          AccountAccessLevel
+
+Contact                  ContactId                                     User/GroupId                   RowCause          ContactAccessLevel
+
+SharingRules:Whereever owd is private/public Read only
+
+Custom
+
+Object Name            Which Record                     With Whom                        why you                 how you want
+-----------------------------------------------------------------------------------------------------------------------------
+Customer__c               ParentId                                  User/GroupId                   RowCause          AccessLevel
+Loan__c                        ParentId                                  User/GroupId                   RowCause          AccessLevel
+
+
+Example1:Share account record to manager with read acccess using apex sharing whenever account record is inserted
+
+public class AccountShareEx {
+public static void shareAccount(List<Account> accs)
+{
+    List<AccountShare> shares=new List<AccountShare>();
+    for(Account a:accs)
+    {
+        if(a.Rating=='Hot')
+        {
+            AccountShare s=new AccountShare();
+            s.AccountId=a.Id;
+            s.AccountAccessLevel='Read';
+            s.RowCause='Manual';
+            s.UserOrGroupId=a.Manager__c;
+            s.OpportunityAccessLevel='Read';
+            shares.add(s);
+            
+        }
+    }
+    insert shares;
+    
+}
+}
+
+Example2:
+
+
+Whenever create beer record with Total quantity is greater than 20000 share that record to baswaraj and IsActive is true
+
+
+public class BeerShareEx {
+public static void beershare(List<Beer__c> beers)
+{
+    User u=[Select Id,Name,IsActive from User Where Name='Baswaraj' and IsActive=true];
+    List<Beer__Share> shares=new List<Beer__Share>();
+    for(Beer__c b:beers)
+    {
+        if(b.Total_Quantity__c>20000)
+        {
+            Beer__Share s=new Beer__Share();
+           s.ParentId=b.Id;
+           s.UserOrGroupId=u.Id;
+           s.RowCause='Manual';
+           s.AccessLevel='Edit';
+            shares.add(s);
+            
+        }
+    }
+    insert shares;
+}
+}
+
+
+
+
+
+
+-------------------------------------AccountTeamMember-------------------------------
+
+public class AccountTeamMembersEx {
+public static void members(List<Account> accs)
+{
+    User u=[Select Id,Name from User where UserName='podilisaivamsi8983@gmail.com' ];
+    List<AccountTeamMember> mems=new List<AccountTeamMember>();
+    for(Account a:accs)
+    {
+        AccountTeamMember mem=new AccountTeamMember();
+        mem.AccountId=a.Id;
+        mem.UserId=u.Id;
+        mem.TeamMemberRole='Account Manager';
+        mem.AccountAccessLeveL='Read';
+        mems.add(mem);
+    }
+    insert mems;
+    
+}
+}
+
+----------------------------------OpportunityTeamMember-----------------------
+
+public class OppTeamMember {
+public static void members(List<Opportunity> opps)
+{
+     User u=[Select Id,Name,UserName from User where UserName='wissentest89@gmail.com' ];
+    List<OpportunityTeamMember> mems=new List<OpportunityTeamMember>();
+    for(Opportunity p:opps)
+    {
+        OpportunityTeamMember mem=new OpportunityTeamMember();
+        mem.OpportunityId=p.Id;q
+        mem.OpportunityAccessLevel='Edit';
+        mem.TeamMemberRole='Account Manager';
+        mem.UserId=u.Id;
+        mems.add(mem);
+    }
+    insert mems;
+}
+}
+-----------------------------------------------Update  Trigger------------------------------------------------------
+
+1.Whenever opportunity stageName changed to closed won share that record to the owner manger
+2.where opportunity owner is changed that old owner is assign to the opportunity team memberpublic class shareRecordtoManager {
+public static void OpportunityShare(Map<Id,Opportunity> oldMap,Map<Id,Opportunity> newMap)
+{
+    Map<Id,Id> mapVal=new Map<Id,Id>();
+    set<Id> OwnerIds=new set<Id>();
+    List<OpportunityShare> shares=new List<OpportunityShare>();
+    set<Id> keys=oldMap.keySet();
+    List<Opportunity> opps=newMap.values();
+    for(Opportunity p:opps)
+    {
+       OwnerIds.add(p.OwnerId);
+    }
+    List<User> users=[Select Id,ManagerId from User Where Id IN:OwnerIds];
+    for(User u:users)
+    {
+    mapVal.put(u.Id,u.ManagerId);
+    }
+    for(Id key:keys)
+    {
+     Opportunity old=oldMap.get(key);
+      Opportunity newVal=newMap.get(key);
+        if(old.StageName!='Closed Won'&&newVal.StageName=='Closed Won')
+        {
+             Id manager=mapVal.get(newVal.OwnerId);
+            OpportunityShare share=new OpportunityShare();
+            share.OpportunityId=key;
+            share.RowCause='Manual';
+            share.OpportunityAccessLevel='Read';
+            share.UserOrGroupId=manager;
+            shares.add(share);
+        }
+    }
+    insert shares;
+}
+    public static void oppTeamMem(Map<Id,Opportunity> oldMap,Map<Id,Opportunity> newMap)
+    {
+        List<OpportunityTeamMember> mems=new List<OpportunityTeamMember>();
+       set<Id> keys=oldMap.keySet() ;
+        for(Id key:keys)
+        {
+              Opportunity old=oldMap.get(key);
+                Opportunity newVal=newMap.get(key);
+            if(old.OwnerId !=newVal.OwnerId)
+            {
+                OpportunityTeamMember mem=new OpportunityTeamMember();
+                mem.OpportunityId=key;
+                mem.UserId=old.OwnerId;
+                mem.OpportunityAccessLevel='Edit';
+                mem.TeamMemberRole='Account Manager';
+                mems.add(mem);
+            }
+        }
+        insert mems;
+    }
+}
+
+-------------------------Delete Trigger-------------------------------------
+1.Where delete company record before  delete related employee record
+
+public class DeleteEmployee {
+    public static void deleteEmp(Map<Id,Company__c> oldMap)
+    {
+       set<Id> compIds=oldMap.keySet();
+     List<Employee__c> emps=[Select Id,Company__c from Employee__c Where Company__c IN:compIds];
+    delete emps;
+    }
+
+}
+
+trigger companyTrigger on Company__c (before delete) {
+DeleteEmployee.deleteEmp(trigger.oldMap);
+}
+2.update account total amount is equal  to all related opportunity total amount
+
+
+public class updateOpp {
+public static void insertOpp(List<Opportunity> opps)
+{
+   Map<Id,List<Opportunity>> oppsMap=new Map<Id,List<Opportunity>>();
+    List<Opportunity> oppList=new List<Opportunity>();
+    for(Opportunity p:opps)
+    {
+        if(p.AccountId !=null)
+        {
+            boolean flag=oppsMap.containsKey(p.AccountId);
+                if(flag==true)
+                {
+                    oppList=oppsMap.get(p.AccountId);
+                    oppList.add(p);
+                    oppsMap.put(p.AccountId,oppList);
+                }
+            else{
+               oppList.add(p);
+                oppsMap.put(p.AccountId, oppList);
+            }
+            }
+        }
+    Map<Id,Decimal> totalMap=new Map<Id,Decimal>();
+    set<Id> keys=oppsMap.keySet();
+    for(Id key:keys)
+    {
+         Decimal sum=0;
+        List<Opportunity> oppsList=oppsMap.get(key);
+    for(Opportunity p:oppsList)
+    {
+        if(p.Amount !=null)
+       sum=sum+p.Amount;    
+    }
+       totalMap.put(key,sum);
+    }
+    List<Account> acc=[Select Id,Total__c from Account Where Id IN:totalMap.keySet()];
+    for(Account a:acc)
+    {
+        if(a.Total__c ==null)
+        {
+            a.Total__c=0;
+        a.Total__c=a.Total__c+totalMap.get(a.Id);
+        }else{
+            a.Total__c=a.Total__c+totalMap.get(a.Id);
+        }
+    }
+    update acc;
+}
+    public static void deleteOpp(List<Opportunity> oldacc)
+    {
+   Map<Id,List<Opportunity>> oppMap=new Map<Id,List<Opportunity>>();
+      List<Opportunity> oppList=new List<Opportunity>();
+    for(Opportunity p:oldacc)
+    {
+        if(p.AccountId !=null)
+        {
+            boolean flag=oppMap.containsKey(p.AccountId);
+             if(flag==true)
+                {
+                    oppList=oppMap.get(p.AccountId);
+                    oppList.add(p);
+                    oppMap.put(p.AccountId,oppList);
+                }
+            else{
+               oppList.add(p);
+                oppMap.put(p.AccountId, oppList);
+            }
+        }
+    }
+    Map<Id,Decimal> totalMap=new Map<Id,Decimal>();
+    set<Id> keys=oppMap.keySet();
+    for(Id key:keys)
+    {
+         Decimal sum=0;
+        List<Opportunity> oppsList=oppMap.get(key);
+    for(Opportunity p:oppsList)
+    {
+        if(p.Amount !=null)
+       sum=sum+p.Amount;    
+    }
+       totalMap.put(key,sum);
+    }
+    List<Account> acc=[Select Id,Total__c from Account Where Id IN:totalMap.keySet()];
+    for(Account a:acc)
+    {
+        
+         if(a.Total__c !=null)
+        a.Total__c=a.Total__c-totalMap.get(a.Id);
+        
+    }
+    update acc;
+    }
+   
+}
+
+
+Trigger:
+
+trigger OppMem on Opportunity (After Insert,After Update,After Delete,After Undelete) {
+
+    if(trigger.isAfter&&(trigger.isInsert||trigger.Isupdate))
+    {
+   updateOpp.insertOpp(trigger.new);
+    }
+     if(trigger.isAfter&&(trigger.isDelete||trigger.Isupdate))
+    {
+   updateOpp.deleteOpp(trigger.old);
+    }
+
+}
+
+
+-----------------------------------------------Asyncronus Apex-------------------------------------------------------
+Future Method:
+
+Example 1:
+public class futureExample  {
+ @future
+  public static void show()  
+  {
+    system.debug('show1');
+       system.debug('show2');
+       system.debug('show3');
+  }
+    public static void invoke()  
+  {
+    system.debug('invoke1');
+       system.debug('invoke2');
+      futureExample.show();
+       system.debug('invoke3');
+  }
+}
+
+EXample 2:avoid  Mixed DML:
+
+public class futureExample  {
+@future
+    public static void insertUserWithRole(
+        String uname, String al, String em, String lname) {
+
+        Profile p = [SELECT Id FROM Profile WHERE Name='Standard User'];
+        UserRole r = [SELECT Id FROM UserRole WHERE Name='COO'];
+        // Create new user with a non-null user role ID 
+        User u = new User(alias = al, email=em, 
+            emailencodingkey='UTF-8', lastname=lname, 
+            languagelocalekey='en_US', 
+            localesidkey='en_US', profileid = p.Id, userroleid = r.Id,
+            timezonesidkey='America/Los_Angeles', 
+            username=uname);
+        insert u;
+    }
+     public static void useFutureMethod() {
+        // First DML operation
+        Account a = new Account(Name='Acme');
+        insert a;
+        
+        // This next operation (insert a user with a role) 
+        // can't be mixed with the previous insert unless 
+        // it is within a future method. 
+        // Call future method to insert a user with a role.
+        futureExample.insertUserWithRole(
+            'mruiz@awcomputing1223.com', 'mruiz33', 
+            'mruiz@awcomputing333.com', 'Ruiz33');        
+    }
+}
+
+
+Benifits:
+----------------
+avoid the mixed dml
+and govern limts high
+
+disadvantage:
+--------------------
+1.it is not allow the non  primitive data types(sobject)  as parameters
+2.it does not return job id.
+3.we can not call one future method in another future method
+-----------------------------------------
+Queueable:
+
+public class QueueableExample implements Queueable {
+    //this QueueableContext give the jobId by using this jobId we can easy find the job status
+  public void execute(QueueableContext qc)  
+  {
+     List<Account> accounts=[Select Id,Name from Account where CreatedDate=TODAY];
+      delete accounts;
+      system.debug(accounts);
+      AsyncApexJob asyn=[SELECT Id, JobType, Status, NumberOfErrors, JobItemsProcessed FROM AsyncApexJob where Id=:qc.getJobId()];
+      system.debug('asyn'+asyn);
+      
+  }
+}
+
+Execute:
+
+QueueableExample qe=new QueueableExample();
+Id jobId=system.enqueueJob(qe);
+ AsyncApexJob asyn=[SELECT Id, JobType, Status, NumberOfErrors, JobItemsProcessed FROM AsyncApexJob where Id=:jobId];
+      system.debug('asyn'+asyn);
+
+advantage:
+--------------------
+1.it is t allow the non primitive data types(sobject)  as parameters
+2.it is return job id.
+3.we can call one  queueable apex in another queueable apex.
+
+------------------------------------
+
+Schedule Apex:
+
+Cron Expression
+
+sec           min           hour             day of month                 month        day of week                         year
+
+1.Write Cron Expression for execute  every month 8:30PM 
+
+0           30               8                              ?                            *                                    ?                               
+
+2.Write Cron Expression for execute  2  march  5AM
+
+0             0               17                           2                          3                                       ?
+
+3.Write Cron Expression for execute  every month 2nd friday  9:30Pm
+
+0           30             9                              ?                           *                                    2#6         
+
+4.Write Cron Expression for execute  every month sunday  9:30Pm 
+
+0           30             9                              ?                           *                                    7 
+
+5.Write Cron Expression for execute  Last month  8AM 
+
+0           0            20                           ?                           LM                               ?
+
+
+Cron Expression reference url:https://webkul.com/blog/cron-expression-for-scheduling-jobs-in-salesforce/
+
+
+1.when shedule execute it first go to crontrigger here we see when submit the schedule and when next shedule run and next shedule is run it is go to async apex job
+2.In shesdule job when submit shedule and when next shedule run
+3.In apex job we can see the status of job
+
+
+public class scheduleExample implements Schedulable {
+public void execute(schedulableContext sc)    
+{
+    List<Account> acc=[Select Id,Type from Account where Type=''];
+    for(Account a:acc)
+    {
+        a.Type='Customer - Direct';
+    }
+    update acc;
+    AsyncApexJob asyn=[SELECT Id, JobType, Status, JobItemsProcessed, TotalJobItems, NumberOfErrors, 
+                       CompletedDate, MethodName FROM AsyncApexJob];
+    system.debug(asyn);
+}
+}
+
+Execute:
+
+syntax:
+system.scheduleBatch(batchable, jobName, minutesFromNow)
+
+
+scheduleExample sc=new scheduleExample();
+string jobName='Testing';
+string cronExp='0 9 6 23 11 ? 2021';
+Id jobId=system.schedule(jobName,cronExp,sc);
+system.scheduleBatch(batchable, jobName, minutesFromNow)
+
+
+-------------------------Batch Apex--------------------------------
+
+public class BatchApexExample implements Database.Batchable<sObject> {
+    //it is fatch data on which logic run it runs only once
+    public Database.QueryLocator start(Database.BatchableContext bc)
+    {
+        //Database.QueryLocator:if you want write soql query and get data and it returns 50 million records
+        // iterable<sobjec>:if you wannot write soql query and get data and write complex logic and get data and it returns 50K records
+        string query='Select Id,Name,StageName from Opportunity';
+        return Database.getQueryLocator(query);
+    }
+   public void execute(Database.BatchableContext bc,List<Opportunity> opps)
+   {
+       for(Opportunity p:opps)
+       {
+           if(p.StageName=='Closed Won')
+         p.stageName='Prospecting';
+       }
+       update opps;
+   }
+   public void finish(Database.BatchableContext bc)
+   {
+       User u=[Select Id,Name,Email,Profile.Name from User Where Profile.Name='System Administrator' and IsActive=true];
+       AsyncApexJob async=[SELECT Id, JobType, Status, TotalJobItems, NumberOfErrors, CompletedDate FROM AsyncApexJob where Id=:bc.getJobId()];
+       String[] emails=new String[]{u.Email};
+       string body='Dear '+u.Profile.Name+',<br/><br/>';
+        body=body+'Please see below  batch apex job details<br/>';
+        body=body+'Id: '+async.Id+'<br/>';
+       body=body+'JobType: '+async.JobType+'<br/>';
+             body=body+'Status: '+async.Status+'<br/>';
+             body=body+'TotalJobItems: '+async.TotalJobItems+'<br/>';
+             body=body+'NumberOfErrors: '+async.NumberOfErrors+'<br/>';
+        body=body+'Thanks,<br/>Sales Team';
+       Messaging.SingleEmailMessage msg=new Messaging.SingleEmailMessage();
+       msg.setToAddresses(emails);
+       msg.setHtmlBody(body);
+       msg.setSubject('Opportunity StageName Updated');
+       Messaging.Email[] email=new Messaging.Email[]{msg};
+           Messaging.sendEmail(email);
+       
+       
+   }
+}
+
+
+Execute:
+
+BatchApexExample bc=new BatchApexExample();
+Database.executeBatch(bc,5);
+
+Example 2:
+
+public class BatchApexExample implements Database.Batchable<sObject>,Database.Stateful{
+    //it is fatch data on which logic run it runs only once
+    //Database.statefull is used to trasfor the non static data one batch to another batch
+    public integer count=0;
+    public static integer size=0;
+    public Database.QueryLocator start(Database.BatchableContext bc)
+    {
+        //Database.QueryLocator:if you want write soql query and get data and it returns 50 million records
+        // iterable<sobjec>:if you wannot write soql query and get data and write complex logic and get data and it returns 50K records
+        string query='Select Id,Name,StageName from Opportunity';
+        return Database.getQueryLocator(query);
+    }
+   public void execute(Database.BatchableContext bc,List<Opportunity> opps)
+   {
+       for(Opportunity p:opps)
+       {
+           if(p.StageName=='Prospecting')
+         p.stageName='Closed Won';
+           count++;
+           size++;
+       }
+       update opps;
+   }
+   public void finish(Database.BatchableContext bc)
+   {
+       User u=[Select Id,Name,Email,Profile.Name from User Where Profile.Name='System Administrator' and IsActive=true];
+       AsyncApexJob async=[SELECT Id, JobType, Status, TotalJobItems, NumberOfErrors, CompletedDate FROM AsyncApexJob where Id=:bc.getJobId()];
+       String[] emails=new String[]{u.Email};
+       string body='Dear '+u.Profile.Name+',<br/><br/>';
+        body=body+'Please see below  batch apex job details<br/>';
+        body=body+'Id: '+async.Id+'<br/>';
+       body=body+'JobType: '+async.JobType+'<br/>';
+             body=body+'Status: '+async.Status+'<br/>';
+             body=body+'TotalJobItems: '+async.TotalJobItems+'<br/>';
+             body=body+'Number of records prcossed that count is: '+Count+'<br/>';
+              body=body+'Number of records prcossed that size is: '+size+'<br/>';
+             body=body+'NumberOfErrors: '+async.NumberOfErrors+'<br/><br/>';
+        body=body+'Thanks,<br/>Sales Team';
+       Messaging.SingleEmailMessage msg=new Messaging.SingleEmailMessage();
+       msg.setToAddresses(emails);
+       msg.setHtmlBody(body);
+       msg.setSubject('Opportunity StageName Updated');
+       Messaging.Email[] email=new Messaging.Email[]{msg};
+           Messaging.sendEmail(email);
+       
+       
+   }
+}
+
+
+Example 3:Send opportunity details to their owner
+
+
+
+public class BatchApexExample implements Database.Batchable<sObject>,Database.Stateful{
+    //it is fatch data on which logic run it runs only once
+    //Database.statefull is used to trasfor the non static data one batch to another batch
+   public integer count=0;
+    Map<Id,List<String>> mapVal;
+    public BatchApexExample()
+    {
+       mapVal=new Map<Id,List<String>>();
+    }
+    public Database.QueryLocator start(Database.BatchableContext bc)
+    {
+        //Database.QueryLocator:if you want write soql query and get data and it returns 50 million records
+        // iterable<sobjec>:if you wannot write soql query and get data and write complex logic and get data and it returns 50K records
+        string query='Select Id,Name,OwnerId from Account';
+        return Database.getQueryLocator(query);
+    }
+   public void execute(Database.BatchableContext bc,List<Account> accs)
+   {
+       for(Account p:accs)
+       {
+           if(mapVal.containsKey(p.OwnerId))
+           {
+               List<String> names=mapVal.get(p.OwnerId);
+               names.add(p.Name);
+               mapVal.put(p.OwnerId,names);
+           }
+           else{
+                List<String> names=new List<String>();
+               names.add(p.Name);
+               mapVal.put(p.OwnerId,names);
+                }
+           count++;
+       }
+   }
+   public void finish(Database.BatchableContext bc)
+   {
+      
+       Map<Id,String> userEmails=new Map<Id,String>();
+     List<User> users=[Select Id,Name,Email from User Where Id IN:mapVal.keySet()];
+       for(User u:users)
+       {
+           userEmails.put(u.Id,u.Email);
+       }
+       Set<Id> keys=mapVal.keySet();
+       Messaging.Email[] emails=new Messaging.Email[]{};
+       for(Id key:keys)
+       {
+           String body='';
+         List<String> oppName=mapVal.get(key);
+           for(String s:oppName) 
+           {
+               body=body+s+'<br/>';
+           }
+           String email=userEmails.get(key);
+           system.debug('email'+email);
+           Messaging.SingleEmailMessage msg=new Messaging.SingleEmailMessage();
+           msg.setToAddresses(new String[]{email});
+           msg.setSubject('Your Accounts '+count);
+           msg.setHtmlBody(body);
+           emails.add(msg);
+           
+       }
+       messaging.sendEmail(emails);
+      
+   }
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+                                          Future Method                  Queueable Apex                      Schedule Apex              BatchApex 
+--------------------------------------------------------------------------------------------------------------------------------
+Future Method                       NO                                     NO                                             NO                                     NO
+---------------------------------------------------------------------------------------------------------------------------------
+Queueable Apex                   YES                                       YES                                             YES                                        YES
+---------------------------------------------------------------------------------------------------------------------------------
+ Schedule Apex                    YES                                       YES                                             YES                                        YES
+---------------------------------------------------------------------------------------------------------------------------------
+  BatchApex                           NO                                         NO                                              YES                                        YES
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

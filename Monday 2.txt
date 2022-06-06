@@ -1,0 +1,193 @@
+MONDAY 2
+--------------------------------------
+48. List some examples of custom fields?
+There are many custom fields available they are Picklist, Currency, Date, Text, Picklist  (multi-select), Email, Percent, Number, Phone, Text area, Lookup relationship, Geolocation, Checkbox, Master-Detail relationship, etc..
+
+49. What are the different ways to store various types of records in Salesforce? 
+We have five different ways in Salesforce to store various types of records such as images, files, and documents.  
+
+They are 
+
+Attachments 
+Google drive 
+Chatter Files 
+Libraries 
+Attachments.
+
+51. What can cause data loss in Salesforce? 
+There are many things that can contribute to the data loss in Salesforce. Which includes : 
+
+Migrating to number, percent, and money, from other data types. 
+When you change the date and time 
+Migrating to multi-select picklist from any other type but except picklist. 
+Moving from Checkbox, auto number,multi-select picklist to any other types. 
+Changing text area to phone, URL, email, or text. 
+
+53. How does Salesforce track sales details?  
+Salesforce gives the accurate results of following things such as 
+
+Number of customers served on a daily basis 
+Regular sales numbers 
+Complete reports from the Sales Manager. 
+Generates sales reports on a timely basis 
+It provides the details of repeat customer activity.
+54. Is it possible to restrict access to data using sharing rules?
+The sharing rules are used only for allowing greater access to records not for restricting.
+
+55. Can we schedule a dynamic dashboard in Salesforce? 
+No, we can not do that in Salesforce.
+
+56. How many ways we can share a record?
+Role Hierarchy :
+
+If we add a user to a role, the user who is above in the role hierarchy will have read access.
+
+Setup → manage users → roles → setup roles → click on ‘add role’ → provide name and save.
+OWD:
+
+Defines the baseline setting for the organization.
+Defines the level of access to the user can see the other user’s record
+OWD can be Private, Public Read Only, Public Read and Write.
+
+Setup → Security Controls → sharing settings → Click on ‘Edit’
+Manual Sharing :
+
+Manual Sharing is sharing a single record to a single user or group of users.
+
+We can see this button detail page of the record and this is visible only when the OWD setting is private.
+
+57. What is the difference between insert() and database .insert()?
+Using the insert method we can insert the records but if any error occurs in any record system will throw an error insertion fail and none of the records are inserted. If we want to execute partially the success of bulk insert operation we will use database .insert.
+
+58. Does the user can create insert their own custom logo while creating their own custom applications?
+Yes, users can upload their custom logo in documents, and then they choose that logo for the organization.
+
+59. List things that can be customized on-page?
+We can customize different things on page layouts like Fields, Buttons, Custom Links, and Related Lists. We can also create sections.
+
+60. Can we create a Roll-Up Summary(RUS) field on the master object?
+Yes. we can create a Roll-Up Summary field on the master object.
+
+61. Can the governor limit perform partial DML activity? Eg: we are inserting 200 records in a loop, the Governor limit is hit at the 151st record, then will those 150 records be created?
+No either all or none.
+
+78. What is Sandbox in Salesforce?  
+A Sandbox is defined as a testing environment that is used to test the code or to conduct experiments in an isolated environment without harming the production environment.
+
+79. When do we use Sandbox?
+A Sandbox helps you when you want to test the newly developed application on force.com or VisualForce page. It is not possible to check something in the production environment if do, so it creates a problem for the regular functioning. So, to get out of this problem developers use Sandbox to test the application.
+
+Types of sandboxes available are :
+
+Developer
+Developer pro
+Partial copy
+Full
+Salesforce Apex Advanced Interview Questions
+80. What is Multitenant Architecture in Salesforce?
+It is the cloud's fundamental technology to share IT resources securely and cost-efficiently.
+
+81. What are static resources? 
+Ans: Static resources allow you to add the content that you want to reference it on the VisualForce page, which includes things like images, Javascript, archives, CSS files, etc. The maximum size of a static resource of an organization is 250 MB. 
+
+82. List the data types that a Set can store
+The Sets can store any of the following data types
+
+Collections 
+User-defined types
+subjects 
+Primitive types
+Built-in Apex types
+83. What is a Visualforce component? 
+Visualforce components are small reusable components of functionality such as widgets, user interface elements, panels, etc. We have two types of VisualForce components which are standard and custom and are used to define the user interface behavior. 
+
+84. What is SOQL?
+A query language that allows you to construct simple but powerful query strings and to specify the criteria that should be used to select the data from the platform database. SOQL Stands for Salesforce Object Query Language.
+
+85. What is the Bulkification best practice?
+We must avoid using index values like Trigger.New[0] as we never know how many records we get in Trigger.New at runtime.
+
+We need to use it for each loop whether we have 1 record or many.
+We must not use SOQL inside for loop.
+We must not use SOSL inside for loop.
+We must not use DML inside for loop.
+We need to store data in collections, so our code will work for single as well as multiple records.
+
+87. How can we perform DML partially?
+If we want partially to happen, use a database.insert(list, false);
+
+88. What Are The Types of SOQL Statements in SalesForce?
+Salesforce Object Query Language is used to query records from the database.com based on the requirement.
+
+There are 2 types of SOQL Statements:
+
+Static SOQL
+Dynamic SOQL
+
+22. What is the workflow in Salesforce?  
+ Workflow is an excellent way to automate specific business processes in Salesforce. To do this, you are required to define certain rules and regulations to automate tasks such as sending an email, updating a field, create a task
+
+We can have access to workflow across the object.
+It is not possible to query from the database.
+23. What is meant by “Transfer record” in profile? 
+Transfer record is a type of function used to grant permission. If a user has permission to share a record with others, then he can share the records that have read-only access. 
+
+24. Explain the Salesforce dashboard?
+In Salesforce we use dashboards to represent the data in a pictorial format. Salesforce dashboard is capable of displaying 20 reports at a time.
+
+25. What is SOAP?
+A protocol that defines a uniform way of passing XML-encoded data. SOAP Stands for Simple Object Access Protocol.
+
+26. What is a Time Trigger?
+The computer system executes one or more tasks according to the set of rules and scheduled tasks.
+
+27. What is Trigger in Salesforce?  
+The trigger is defined as an Apex code that executes before or after the following functions such as insert, update, delete, etc. trigger enables to perform custom actions before and after modifications to the records of Salesforce. 
+
+For more details visit - Trigger Scenarios in Salesforce
+28. What are the actions in the workflow? 
+ Below mentioned are the actions in the workflow 
+
+Field update 
+Task
+Outbound message 
+Email alert 
+29. What are the main things that need to consider in the “Master-Detail Relationship”?
+Record level access is determined by the parent, Mandatory on the child for reference of the parent, cascade delete (if you delete the parent, it can cascade delete the child).
+
+Salesforce Intermediate Interview Questions
+30. How many records can be shown in matrix, tabular & summary reports?
+We can create up to 2k records in Matrix, Tabular & Summary Reports.
+
+31. Is the Roll-Up Summary field is only possible in the Master-detail relationship?
+ Yes, it is possible in a master-detail relationship.
+
+32. How many Master-detail relationship fields can be created in an object?
+Maximum two MDR fields can be created in an object.
+
+33. How many LR(lookup relationship) fields can be created in an object?
+Maximum 40 Lookup relationship fields can be created in an object.
+
+34. If we delete parent records in MDR, what happens to the child?
+If you delete the parent record in the MDR, the child record also gets deleted in MDR.
+
+35. What about the undelete option?
+It will restore the record with the data in the object.
+
+36. How many Roll-Up Summary fields can be created in an Object?
+Up to 40 can be created. (before 2010 it is 10 after 2016 it is up to 40 and it will change accordingly to salesforce updates).
+
+37. If we reparent in the object will the parent update?
+Yes, the parent will update the object.
+
+Do you want to get certified and build your career in Salesforce Marketing Cloud? Then enroll in "Salesforce Marketing Cloud Training" this course will help you to achieve excellence in this domain.
+38. How we can create an MDR on those objects where we already have records?
+First, we create LR between the two objects.
+Connect all child records to parents.
+Convert the field type from LR to MDR.
+39. How to look at the user license information in Salesforce Org?
+Steps to find out the user license:
+
+Salesforce Org → Setup → Administer → Company Profile → Company Information.
+40. Can we delete a user in Salesforce?
+No, we cannot delete the user in the salesforce. 
